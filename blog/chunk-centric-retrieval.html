@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chunk-centric retrieval is an interface problem - Rithvik Kasarla</title>
+    <meta
+      name="description"
+      content="A short note on why retrieval systems need inspectable paths from entities and relationships back to source chunks."
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Rithvik Kasarla</a>
+      <nav aria-label="Primary navigation">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#research">Research</a>
+        <a href="index.html">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="blog-shell">
+      <article class="article">
+        <a class="back-link" href="index.html">Back to blog</a>
+        <p class="article-meta">Jun 20, 2026</p>
+        <h1>Chunk-centric retrieval is an interface problem</h1>
+        <p>
+          The hard part of retrieval is not only finding the right text. It is giving the person or agent enough structure to understand why that text was returned and what claim it can support.
+        </p>
+        <p>
+          Pure vector search often gives a list of plausible passages. That can work for discovery, but it becomes brittle when the task requires financial reasoning, source-backed decisions, or an audit trail. A chunk-centric knowledge graph changes the interface: entities and relationships become navigation handles, while chunks remain the evidence boundary.
+        </p>
+        <h2>The useful path is inspectable</h2>
+        <p>
+          The retrieval path should be visible enough to follow: entity to relationship to source chunk. When the answer depends on that path, the system can show where the claim came from instead of hiding the reasoning inside a similarity score.
+        </p>
+        <p>
+          That is the product value of graph-grounded retrieval. It gives the system something closer to a map, and it gives the user a way to challenge a conclusion without reverse-engineering the model's hidden context.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
