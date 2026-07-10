@@ -1,15 +1,20 @@
 # Rithvik Kasarla Personal Site
 
-Static first pass for a personal website with a blog.
+Static personal site built as a mechanical world lift. The homepage is one continuous application: the arrival floor introduces Rithvik, then the car descends through collections of projects, papers, field notes, and experiments.
 
 Open `index.html` directly in a browser, or deploy the folder contents to GitHub Pages.
 
 ## Structure
 
-- `index.html`: homepage, selected work, research, blog links, contact
+- `index.html`: world-lift homepage and collection floors
+- `assets/world-lift.css`: world-lift homepage styling
+- `assets/world-lift.js`: floor indicator behavior
+- `assets/world-lift-blog.css`: shared world-lift styling for the blog index and articles
 - `blog/index.html`: blog index
 - `blog/*.html`: starter posts
-- `assets/styles.css`: site styling
+- `assets/styles.css`: archived pre-lift styling; no longer loaded by the site
+
+`design-prototype.html` and its related assets remain the design study from which the homepage direction was chosen. Do not ship its variant switcher or its cumulative prototype CSS.
 
 ## Deployment Notes
 

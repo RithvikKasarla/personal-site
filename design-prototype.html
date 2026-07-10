@@ -1,0 +1,554 @@
+<!doctype html>
+<!-- THROWAWAY UI PROTOTYPE: five homepage structures, switchable with ?variant=A|B|C|D|E. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Rithvik — Mechanical Site Prototypes</title>
+    <link rel="stylesheet" href="assets/design-prototype.css?v=8" />
+  </head>
+  <body data-variant="A">
+    <header class="prototype-notice">
+      <strong>Throwaway design study</strong>
+      <span>Scroll drives the big machinery. Open valves let the steam loose.</span>
+    </header>
+
+    <main>
+      <section class="variant variant-a" data-variant-panel="A" aria-labelledby="variant-a-title">
+        <header class="ledger-head">
+          <a href="index.html">Rithvik Kasarla</a>
+          <span>Workshop ledger / No. 2026</span>
+        </header>
+
+        <div class="cutaway-intro">
+          <p class="plate-number">Plate 00</p>
+          <h1 id="variant-a-title">I keep building machines that need a way back to the world.</h1>
+          <p>
+            Some listen. Some look around the room. Some keep an agent turn from
+            disappearing into a black box. Scroll to turn the driveshaft.
+          </p>
+        </div>
+
+        <aside class="drive-train" aria-hidden="true">
+          <div class="shaft"></div>
+          <div class="gear gear-large"><span></span></div>
+          <div class="gear gear-small gear-two"><span></span></div>
+          <div class="gear gear-small gear-three"><span></span></div>
+          <div class="travel-marker"><b>POSITION</b><span></span></div>
+        </aside>
+
+        <div class="machine-bays">
+          <article class="machine-bay bay-voice" data-chapter="01">
+            <div class="bay-label"><span>Bay 01</span><b>Acoustic assembly</b></div>
+            <div class="artifact acoustic-artifact" aria-hidden="true">
+              <div class="horn"></div>
+              <div class="voice-strip"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="paper-feed">WAKE / LOCAL STT / STREAMING TTS</div>
+            </div>
+            <div class="bay-copy">
+              <p class="hand-note">Built because typing is not always the right interface.</p>
+              <h2>Agent Voice</h2>
+              <p>I wanted Hermes to hear me without sending the room to the cloud. The result is an always-on local voice loop with wake words, endpointing, context, and audio ducking.</p>
+              <a href="https://github.com/RithvikKasarla/Agent-Voice">Open the actual repository →</a>
+            </div>
+          </article>
+
+          <article class="machine-bay bay-camera" data-chapter="02">
+            <div class="bay-label"><span>Bay 02</span><b>Optical assembly</b></div>
+            <div class="artifact camera-artifact" aria-hidden="true">
+              <div class="camera-head"><i></i></div>
+              <div class="camera-neck"></div>
+              <div class="degree-rail"><span>−90°</span><span>0°</span><span>+90°</span></div>
+            </div>
+            <div class="bay-copy">
+              <p class="hand-note">The camera should be a tool, not a passive sensor.</p>
+              <h2>HermesCamera</h2>
+              <p>I taught a desk camera to look around the room: capture, record, pan, tilt, zoom, scan, and hand the result back to an agent that can decide what to do next.</p>
+              <a href="https://github.com/RithvikKasarla/HermesCamera">Open the actual repository →</a>
+            </div>
+          </article>
+
+          <article class="machine-bay bay-core" data-chapter="03">
+            <div class="bay-label"><span>Bay 03</span><b>Governor assembly</b></div>
+            <div class="artifact governor-artifact" aria-hidden="true">
+              <div class="governor-arm arm-left"></div>
+              <div class="governor-arm arm-right"></div>
+              <div class="governor-spindle"></div>
+              <ol>
+                <li>turn.started</li><li>tool.requested</li><li>state.committed</li>
+              </ol>
+            </div>
+            <div class="bay-copy">
+              <p class="hand-note">An agent turn should leave footprints.</p>
+              <h2>agent-core</h2>
+              <p>I got tired of agent turns becoming untraceable blobs. This is a small TypeScript runtime for ordered events, lifecycle guards, session state, idempotency, and hooks.</p>
+              <a href="https://github.com/RithvikKasarla/agent-core">Open the actual repository →</a>
+            </div>
+          </article>
+
+          <article class="machine-bay bay-research" data-chapter="04">
+            <div class="bay-label"><span>Bay 04</span><b>Evidence assembly</b></div>
+            <div class="artifact evidence-artifact" aria-hidden="true">
+              <div>ENTITY</div><i></i><div>RELATION</div><i></i><div>CHUNK</div>
+            </div>
+            <div class="bay-copy">
+              <p class="hand-note">Answers should lead back to the line that earned them.</p>
+              <h2>Beyond Vector Search</h2>
+              <p>My solo ICLR 2026 workshop research follows financial reasoning through a chunk-centric graph so the retrieval path can be inspected instead of merely trusted.</p>
+              <a href="https://iclr.cc/virtual/2026/10016518">Open the workshop page →</a>
+            </div>
+          </article>
+        </div>
+
+        <footer class="ledger-foot">
+          <p>Side bench: animated desktop companions, old Flash archaeology, and whatever makes local agents feel more alive.</p>
+          <a href="https://www.linkedin.com/in/rithvik-kasarla">Leave a note in the workshop →</a>
+        </footer>
+      </section>
+
+      <section class="variant variant-b" data-variant-panel="B" aria-labelledby="variant-b-title" hidden>
+        <header class="bench-head">
+          <h1 id="variant-b-title">Rithvik’s workbench</h1>
+          <p>Four things on the desk. Four things I’m trying to teach computers to do.</p>
+        </header>
+
+        <div class="workbench-scene" aria-label="Interactive workbench">
+          <button class="bench-tool tool-mic is-active" data-bench-target="voice">
+            <span class="mic-object" aria-hidden="true"></span>
+            <b>Listen</b><small>Agent Voice</small>
+          </button>
+          <button class="bench-tool tool-camera" data-bench-target="camera">
+            <span class="camera-object" aria-hidden="true"></span>
+            <b>Look</b><small>HermesCamera</small>
+          </button>
+          <button class="bench-tool tool-terminal" data-bench-target="core">
+            <span class="terminal-object" aria-hidden="true">turn_004<br />tool → pending<br />state → saved</span>
+            <b>Remember</b><small>agent-core</small>
+          </button>
+          <button class="bench-tool tool-notebook" data-bench-target="research">
+            <span class="notebook-object" aria-hidden="true">entity<br />↓<br />relationship<br />↓<br />chunk</span>
+            <b>Prove</b><small>Research</small>
+          </button>
+          <div class="bench-nameplate">R. Kasarla / bench no. 17</div>
+        </div>
+
+        <div class="bench-chapters">
+          <article id="bench-voice" data-bench-chapter="voice">
+            <span>01 / the microphone</span>
+            <h2>I wanted to talk to the agent while my hands were busy.</h2>
+            <p>So I built a local voice loop: wake word, local transcription, streaming speech, persistent context, and desktop audio ducking.</p>
+          </article>
+          <article id="bench-camera" data-bench-chapter="camera">
+            <span>02 / the camera</span>
+            <h2>I wanted the agent to turn its head.</h2>
+            <p>HermesCamera gives a local agent control over capture, video, pan, tilt, zoom, room scans, and interpretation.</p>
+          </article>
+          <article id="bench-core" data-bench-chapter="core">
+            <span>03 / the terminal</span>
+            <h2>I wanted every agent turn to leave a useful trace.</h2>
+            <p>agent-core makes the loop legible: ordered events, lifecycle rules, state, hooks, and safe retries.</p>
+          </article>
+          <article id="bench-research" data-bench-chapter="research">
+            <span>04 / the notebook</span>
+            <h2>I wanted the answer to show its work.</h2>
+            <p>Beyond Vector Search follows the path from entity to relationship to source chunk. It became a solo ICLR 2026 workshop poster.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="variant variant-c" data-variant-panel="C" aria-labelledby="variant-c-title" hidden>
+        <header class="engine-head">
+          <span>Loop engine / patent pending nowhere</span>
+          <h1 id="variant-c-title">Observe. Decide. Act. Check what happened.</h1>
+          <p>Scroll advances the crank. Halfway down, the mechanism jams—because real systems do.</p>
+        </header>
+
+        <div class="engine-assembly" aria-hidden="true">
+          <div class="engine-rail"></div>
+          <div class="flywheel"><span></span></div>
+          <div class="connecting-rod"></div>
+          <div class="piston"><b>LOOP</b></div>
+          <div class="pressure-gauge"><i></i><span>TRACE PRESSURE</span></div>
+        </div>
+
+        <div class="engine-stations">
+          <article class="station station-observe">
+            <span>Station 01</span>
+            <h2>Observe</h2>
+            <p>A microphone hears a wake word. A camera finds the current state. The loop starts with contact, not assumptions.</p>
+            <small>Agent Voice / HermesCamera</small>
+          </article>
+          <article class="station station-decide">
+            <span>Station 02</span>
+            <h2>Decide</h2>
+            <p>Ordered events and explicit session state turn a vague agent thought into something the next step can use.</p>
+            <small>agent-core</small>
+          </article>
+          <article class="station station-act">
+            <span>Station 03</span>
+            <h2>Act</h2>
+            <p>The camera moves. The tool runs. The workflow advances. Intelligence becomes useful when it changes something outside itself.</p>
+            <small>Hardware / tools / operators</small>
+          </article>
+          <article class="station station-jam">
+            <span>Fault 04</span>
+            <h2>The machine jammed.</h2>
+            <p>A tool returned late and the state no longer matches the plan. This is the part most demos edit out.</p>
+            <button class="jam-lever" type="button"><i></i> Pull the recovery lever</button>
+            <p class="recovery-note" hidden>Trace inspected. State reconciled. Loop may continue.</p>
+          </article>
+          <article class="station station-verify">
+            <span>Station 05</span>
+            <h2>Verify</h2>
+            <p>Every answer, action, and recovery needs a path back to evidence. Entity → relationship → source chunk.</p>
+            <small>Beyond Vector Search / ICLR 2026</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="variant variant-d" data-variant-panel="D" aria-labelledby="variant-d-title" hidden>
+        <header class="world-head">
+          <a href="index.html">Rithvik Kasarla</a>
+          <span>Field station 17 · machinery in public</span>
+          <a href="https://github.com/RithvikKasarla">GitHub ↗</a>
+        </header>
+
+        <div class="world-stage" aria-hidden="true">
+          <div class="cloud-bank cloud-bank-one"></div>
+          <div class="cloud-bank cloud-bank-two"></div>
+          <div class="distant-city">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+
+          <div class="airship">
+            <img src="assets/prototype-world/airship.png" alt="" />
+            <span>RK–17</span>
+          </div>
+
+          <div class="pipe-tower pipe-tower-left">
+            <span class="pipe-run run-one"></span>
+            <span class="pipe-run run-two"></span>
+            <span class="pipe-run run-three"></span>
+            <img src="assets/prototype-world/copperpipe.png" alt="" />
+          </div>
+          <div class="pipe-tower pipe-tower-right">
+            <span class="pipe-run run-one"></span>
+            <span class="pipe-run run-two"></span>
+            <span class="pipe-run run-three"></span>
+            <img src="assets/prototype-world/copperpipe.png" alt="" />
+          </div>
+
+          <div class="world-boiler">
+            <div class="boiler-cap"></div>
+            <div class="boiler-face">
+              <div class="world-gauge"><i></i><b>LOOP<br />PRESSURE</b></div>
+              <span class="boiler-rivets"></span>
+            </div>
+            <div class="boiler-leg leg-one"></div>
+            <div class="boiler-leg leg-two"></div>
+          </div>
+
+          <div class="world-gears">
+            <div class="world-gear gear-alpha"><i></i></div>
+            <div class="world-gear gear-beta"><i></i></div>
+            <div class="world-gear gear-gamma"><i></i></div>
+            <div class="world-gear gear-delta"><i></i></div>
+          </div>
+
+          <div class="steam-stack stack-left"><i></i><i></i><i></i><i></i></div>
+          <div class="steam-stack stack-right"><i></i><i></i><i></i><i></i></div>
+          <div class="world-cable cable-one"></div>
+          <div class="world-cable cable-two"></div>
+        </div>
+
+        <div class="foreground-pipe foreground-pipe-one" aria-hidden="true"><i></i><b></b></div>
+        <div class="foreground-pipe foreground-pipe-two" aria-hidden="true"><i></i><b></b></div>
+
+        <div class="world-chapters">
+          <section class="world-intro">
+            <p>Personal workshop / powered by unfinished ideas</p>
+            <h1 id="variant-d-title">I build agents that can get their hands dirty.</h1>
+            <div class="intro-ticket">
+              <span>Operator’s note</span>
+              <p>Keep descending. The engine under this city listens, looks, acts, jams, recovers, and leaves evidence behind.</p>
+            </div>
+            <div class="scroll-placard">↓ OPEN THE THROTTLE</div>
+          </section>
+
+          <article class="world-deck deck-observe">
+            <div class="deck-number">DECK 01 / INTAKE</div>
+            <div class="hanging-sign sign-left">
+              <small>The machine grows ears</small>
+              <h2>Listen.</h2>
+              <p>Agent Voice keeps the whole loop local: wake word, endpointing, transcription, streaming speech, and audio ducking.</p>
+              <a href="https://github.com/RithvikKasarla/Agent-Voice">Inspect Agent Voice ↗</a>
+            </div>
+            <div class="deck-instrument listening-horn" aria-hidden="true"><i></i><b></b><span></span></div>
+            <p class="chalk-note note-one">Typing is not always<br />the right interface.</p>
+          </article>
+
+          <article class="world-deck deck-look">
+            <div class="deck-number">DECK 02 / OPTICS</div>
+            <div class="hanging-sign sign-right">
+              <small>The machine turns its head</small>
+              <h2>Look.</h2>
+              <p>HermesCamera lets an agent capture, record, pan, tilt, zoom, and scan the actual room before it decides what comes next.</p>
+              <a href="https://github.com/RithvikKasarla/HermesCamera">Inspect HermesCamera ↗</a>
+            </div>
+            <div class="deck-instrument world-camera" aria-hidden="true"><i></i><b></b><span></span></div>
+            <p class="chalk-note note-two">A camera should be a tool,<br />not a passive sensor.</p>
+          </article>
+
+          <article class="world-deck deck-think">
+            <div class="deck-number">DECK 03 / GOVERNOR</div>
+            <div class="hanging-sign sign-left">
+              <small>The machine leaves footprints</small>
+              <h2>Think<br />out loud.</h2>
+              <p>agent-core turns a slippery agent turn into ordered events, explicit state, lifecycle rules, hooks, and safe retries.</p>
+              <a href="https://github.com/RithvikKasarla/agent-core">Inspect agent-core ↗</a>
+            </div>
+            <div class="event-tape" aria-hidden="true">
+              <span>turn.started</span><span>tool.requested</span><span>state.committed</span><span>trace.sealed</span>
+            </div>
+          </article>
+
+          <article class="world-deck deck-jam">
+            <div class="deck-number">FAULT DECK / SOMETHING REAL HAPPENED</div>
+            <div class="fault-siren" aria-hidden="true"><i></i></div>
+            <div class="hanging-sign fault-sign">
+              <small>Tool late · plan stale · pressure rising</small>
+              <h2>Of course it jammed.</h2>
+              <p>The interesting part is not hiding the failure. It is finding the trace, reconciling state, and giving the loop a way back.</p>
+              <button class="world-valve" type="button"><i></i><span>Crank the relief valve</span></button>
+              <p class="world-recovery" hidden>Pressure vented. Trace recovered. State agrees with reality again.</p>
+            </div>
+            <div class="burst-pipe" aria-hidden="true"><i></i><b></b><span></span></div>
+          </article>
+
+          <article class="world-deck deck-proof">
+            <div class="deck-number">DECK 05 / OBSERVATORY</div>
+            <div class="hanging-sign sign-right">
+              <small>The machine shows its work</small>
+              <h2>Prove it.</h2>
+              <p>My ICLR 2026 workshop research follows financial reasoning from entity to relationship to source chunk. The answer comes with a route back to evidence.</p>
+              <a href="https://iclr.cc/virtual/2026/10016518">Open the research ↗</a>
+            </div>
+            <div class="proof-scope" aria-hidden="true"><i></i><b></b><span>ENTITY → RELATION → CHUNK</span></div>
+          </article>
+
+          <footer class="world-dock">
+            <p>Side rooms contain an animated desktop companion, old Flash archaeology, and other machines that probably should not be alive yet.</p>
+            <a href="https://www.linkedin.com/in/rithvik-kasarla">Send a transmission ↗</a>
+            <small>Prototype art: CC0 airship by mujtaba-io, CC0 pipes by bleutailfly.</small>
+          </footer>
+        </div>
+      </section>
+
+      <section class="variant variant-e" data-variant-panel="E" aria-labelledby="variant-e-title" hidden>
+        <div class="elevator-frame" aria-hidden="true">
+          <div class="cabin-shell">
+            <div class="cabin-canopy">
+              <span class="canopy-brace brace-left"></span>
+              <span class="canopy-brace brace-right"></span>
+              <div class="cabin-lamp"><i></i></div>
+              <small>R. KASARLA · CAR 17</small>
+            </div>
+            <div class="cabin-wall cabin-wall-left">
+              <span class="wall-rivets"></span>
+              <div class="guide-chain"></div>
+              <b>UPPER CITY</b>
+            </div>
+            <div class="cabin-wall cabin-wall-right">
+              <span class="wall-rivets"></span>
+              <div class="guide-chain"></div>
+              <b>LOWER WORKS</b>
+            </div>
+            <div class="cabin-gate cabin-gate-left"></div>
+            <div class="cabin-gate cabin-gate-right"></div>
+            <div class="cabin-console">
+              <small>CAR CONTROL</small>
+              <div class="console-buttons"><i></i><i></i><i></i></div>
+              <div class="brake-slot"><span></span></div>
+              <b>DESCENT BRAKE</b>
+            </div>
+            <div class="cabin-floor">
+              <div class="floor-grate"></div>
+              <span>STAND CLEAR OF THE GATE</span>
+            </div>
+          </div>
+          <svg class="elevator-pipework" viewBox="0 0 1200 800" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="liftPipeMetal" x1="0" x2="1">
+                <stop offset="0" stop-color="#4a2118" />
+                <stop offset=".24" stop-color="#a64f2f" />
+                <stop offset=".52" stop-color="#dc7b43" />
+                <stop offset=".74" stop-color="#8b3e28" />
+                <stop offset="1" stop-color="#3a1d17" />
+              </linearGradient>
+              <filter id="pipeShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="9" dy="11" stdDeviation="2" flood-color="#15130f" flood-opacity=".56" />
+              </filter>
+            </defs>
+            <g class="pipe-route route-left" filter="url(#pipeShadow)">
+              <path class="pipe-black" d="M82 770 C130 682 42 623 84 538 C129 448 48 385 82 300 C115 217 56 153 110 75 C170 8 292 50 350 30" />
+              <path class="pipe-metal" d="M82 770 C130 682 42 623 84 538 C129 448 48 385 82 300 C115 217 56 153 110 75 C170 8 292 50 350 30" />
+              <path class="pipe-glint" d="M82 770 C130 682 42 623 84 538 C129 448 48 385 82 300 C115 217 56 153 110 75 C170 8 292 50 350 30" />
+            </g>
+            <g class="pipe-route route-right" filter="url(#pipeShadow)">
+              <path class="pipe-black" d="M1118 770 C1070 682 1158 623 1116 538 C1071 448 1152 385 1118 300 C1085 217 1144 153 1090 75 C1030 8 908 50 850 30" />
+              <path class="pipe-metal" d="M1118 770 C1070 682 1158 623 1116 538 C1071 448 1152 385 1118 300 C1085 217 1144 153 1090 75 C1030 8 908 50 850 30" />
+              <path class="pipe-glint" d="M1118 770 C1070 682 1158 623 1116 538 C1071 448 1152 385 1118 300 C1085 217 1144 153 1090 75 C1030 8 908 50 850 30" />
+            </g>
+            <g class="pipe-route route-bottom" filter="url(#pipeShadow)">
+              <path class="pipe-black" d="M82 770 C300 715 420 785 600 742 C780 699 930 777 1118 770" />
+              <path class="pipe-metal" d="M82 770 C300 715 420 785 600 742 C780 699 930 777 1118 770" />
+              <path class="pipe-glint" d="M82 770 C300 715 420 785 600 742 C780 699 930 777 1118 770" />
+            </g>
+            <g class="pipe-route route-branch" filter="url(#pipeShadow)">
+              <path class="pipe-black" d="M84 538 C150 496 184 562 250 526 M1116 538 C1050 496 1016 562 950 526" />
+              <path class="pipe-metal" d="M84 538 C150 496 184 562 250 526 M1116 538 C1050 496 1016 562 950 526" />
+              <path class="pipe-glint" d="M84 538 C150 496 184 562 250 526 M1116 538 C1050 496 1016 562 950 526" />
+            </g>
+          </svg>
+          <div class="car-steam car-steam-left"><i></i><i></i><i></i></div>
+          <div class="car-steam car-steam-right"><i></i><i></i><i></i></div>
+          <div class="elevator-crossbar elevator-crossbar-top">
+            <span>RK / WORLD LIFT</span>
+            <div class="floor-dial"><i></i><b>00</b><small>DEPTH</small></div>
+            <span>LOAD: IDEAS + TOOLS</span>
+          </div>
+          <div class="elevator-rail elevator-rail-left">
+            <div class="rail-chain"></div>
+            <img class="lift-gear lift-gear-large" data-gear="10" data-gear-offset="0" src="assets/prototype-world/gears/Gear 10 - Bronze_00.png" alt="" />
+            <img class="lift-gear lift-gear-small" data-gear="6" data-gear-offset="2" src="assets/prototype-world/gears/Gear 6 - Bronze_02.png" alt="" />
+          </div>
+          <div class="elevator-rail elevator-rail-right">
+            <div class="rail-chain"></div>
+            <img class="lift-gear lift-gear-medium" data-gear="9" data-gear-offset="1" src="assets/prototype-world/gears/Gear 9 - Bronze_01.png" alt="" />
+            <img class="lift-gear lift-gear-small" data-gear="6" data-gear-offset="3" src="assets/prototype-world/gears/Gear 6 - Bronze_03.png" alt="" />
+          </div>
+          <div class="elevator-crossbar elevator-crossbar-bottom">
+            <span>DESCENT DRIVE ENGAGED</span>
+            <i class="lift-status"></i>
+            <span>SCROLL TO OPERATE</span>
+          </div>
+          <div class="elevator-window-bevel"></div>
+        </div>
+
+        <div class="elevator-world">
+          <section class="elevator-floor floor-arrival">
+            <div class="world-sky-layer sky-far"></div>
+            <div class="world-sky-layer sky-near"></div>
+            <div class="world-pipe-map pipe-map-arrival" aria-hidden="true"></div>
+            <div class="lift-airship" aria-hidden="true">
+              <img src="assets/prototype-world/airship.png" alt="" />
+              <span>FIELD UNIT RK–17</span>
+            </div>
+            <div class="elevator-copy arrival-copy">
+              <p>Observation lift / upper city</p>
+              <h1 id="variant-e-title">Welcome to the world-engine.</h1>
+              <div class="lift-manifest">
+                <span>Operator: Rithvik Kasarla</span>
+                <p>I build agents that can listen, look, act, recover, and show their work. Take the lift down through the machinery.</p>
+              </div>
+            </div>
+            <div class="floor-stamp">FLOOR 00 · ARRIVAL</div>
+          </section>
+
+          <article class="elevator-floor floor-voice">
+            <div class="world-pipe-map pipe-map-left" aria-hidden="true"></div>
+            <div class="world-gear-bank world-gear-bank-right" aria-hidden="true">
+              <img data-gear="10" data-gear-offset="0" src="assets/prototype-world/gears/Gear 10 - Bronze_00.png" alt="" />
+              <img data-gear="6" data-gear-offset="2" src="assets/prototype-world/gears/Gear 6 - Bronze_02.png" alt="" />
+            </div>
+            <div class="steam-vent vent-voice" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="elevator-copy lift-plaque plaque-left">
+              <small>Intake district / Agent Voice</small>
+              <h2>The machine<br />grows ears.</h2>
+              <p>Wake word, local transcription, endpointing, streaming speech, persistent context, and audio ducking—without sending the room away.</p>
+              <a href="https://github.com/RithvikKasarla/Agent-Voice">Open the engine room ↗</a>
+            </div>
+            <div class="floor-stamp">FLOOR 01 · LISTEN</div>
+          </article>
+
+          <article class="elevator-floor floor-camera">
+            <div class="world-pipe-map pipe-map-right" aria-hidden="true"></div>
+            <div class="world-gear-bank world-gear-bank-left" aria-hidden="true">
+              <img data-gear="9" data-gear-offset="1" src="assets/prototype-world/gears/Gear 9 - Bronze_01.png" alt="" />
+              <img data-gear="6" data-gear-offset="3" src="assets/prototype-world/gears/Gear 6 - Bronze_03.png" alt="" />
+            </div>
+            <div class="elevator-copy lift-plaque plaque-right">
+              <small>Optics district / HermesCamera</small>
+              <h2>The machine<br />turns its head.</h2>
+              <p>Capture, record, pan, tilt, zoom, and scan the real room. The camera is a tool the agent can operate—not a passive sensor.</p>
+              <a href="https://github.com/RithvikKasarla/HermesCamera">Look through the lens ↗</a>
+            </div>
+            <div class="floor-stamp">FLOOR 02 · LOOK</div>
+          </article>
+
+          <article class="elevator-floor floor-core">
+            <div class="world-pipe-map pipe-map-core" aria-hidden="true"></div>
+            <div class="event-carriage" aria-hidden="true">
+              <span>turn.started</span><span>tool.requested</span><span>state.committed</span><span>trace.sealed</span>
+            </div>
+            <div class="elevator-copy lift-plaque plaque-left">
+              <small>Governor district / agent-core</small>
+              <h2>The machine<br />leaves tracks.</h2>
+              <p>Ordered events, explicit state, lifecycle guards, hooks, and idempotency make a slippery agent turn legible enough to repair.</p>
+              <a href="https://github.com/RithvikKasarla/agent-core">Inspect the governor ↗</a>
+            </div>
+            <div class="floor-stamp">FLOOR 03 · REMEMBER</div>
+          </article>
+
+          <article class="elevator-floor floor-fault">
+            <div class="world-pipe-map pipe-map-fault" aria-hidden="true"></div>
+            <div class="fault-steam" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="elevator-copy lift-plaque fault-plaque">
+              <small>Emergency stop / pressure mismatch</small>
+              <h2>Something real happened.</h2>
+              <p>A tool returned late. The plan is stale. The interesting part is finding the trace and giving the machine a way back.</p>
+              <button class="lift-relief" type="button"><img data-gear="9" data-gear-offset="0" src="assets/prototype-world/gears/Gear 9 - Bronze_00.png" alt="" /><span>Vent the fault line</span></button>
+              <p class="lift-recovery" hidden>Pressure falling. Trace found. State reconciled. Descent drive restored.</p>
+            </div>
+            <div class="floor-stamp">FAULT 04 · RECOVER</div>
+          </article>
+
+          <article class="elevator-floor floor-proof">
+            <div class="world-pipe-map pipe-map-proof" aria-hidden="true"></div>
+            <div class="world-gear-bank world-gear-bank-right bank-proof" aria-hidden="true">
+              <img data-gear="10" data-gear-offset="2" src="assets/prototype-world/gears/Gear 10 - Bronze_02.png" alt="" />
+              <img data-gear="9" data-gear-offset="0" src="assets/prototype-world/gears/Gear 9 - Bronze_00.png" alt="" />
+            </div>
+            <div class="elevator-copy lift-plaque plaque-right">
+              <small>Archive district / ICLR 2026</small>
+              <h2>The machine<br />shows its work.</h2>
+              <p>My workshop research follows financial reasoning from entity to relationship to source chunk. Every answer carries a route back to evidence.</p>
+              <a href="https://iclr.cc/virtual/2026/10016518">Enter the archive ↗</a>
+            </div>
+            <div class="floor-stamp">FLOOR 05 · PROVE</div>
+          </article>
+
+          <footer class="elevator-floor floor-workshop">
+            <div class="world-pipe-map pipe-map-workshop" aria-hidden="true"></div>
+            <div class="elevator-copy workshop-copy">
+              <small>Lower workshop / more questionable machinery</small>
+              <p>Animated desktop companions, old Flash archaeology, and whatever makes local agents feel more alive.</p>
+              <a href="https://www.linkedin.com/in/rithvik-kasarla">Send a transmission ↗</a>
+              <em>Prototype assets: CC0 pipe sheet by bleutailfly, airship by mujtaba-io, gear sprites by Karsiori Studio.</em>
+            </div>
+            <div class="floor-stamp">FLOOR 06 · WORKSHOP</div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <nav class="prototype-switcher" aria-label="Prototype variants">
+      <button type="button" data-switch="previous" aria-label="Previous variant">←</button>
+      <span aria-live="polite">A — Vertical workshop cutaway</span>
+      <button type="button" data-switch="next" aria-label="Next variant">→</button>
+    </nav>
+
+    <script src="assets/design-prototype.js?v=5"></script>
+  </body>
+</html>

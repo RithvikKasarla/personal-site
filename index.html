@@ -3,347 +3,137 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#090a12" />
-    <title>Rithvik Kasarla — Agentic Engineer</title>
-    <meta
-      name="description"
-      content="Rithvik Kasarla builds applied AI systems that listen, see, act, and improve in real-world workflows."
-    />
-    <link rel="stylesheet" href="assets/styles.css?v=2" />
+    <meta name="theme-color" content="#211d18" />
+    <title>Rithvik Kasarla</title>
+    <meta name="description" content="Rithvik Kasarla builds agentic systems that listen, look, act, recover, and show their work." />
+  <link rel="stylesheet" href="assets/world-lift.css?v=10" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to the lift floors</a>
 
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Rithvik Kasarla, home">
-        <span class="brand-mark" aria-hidden="true">RK</span>
-        <span>Rithvik Kasarla</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#research">Research</a>
-        <a href="blog/index.html">Field notes</a>
-        <a class="nav-contact" href="#contact">Let's talk</a>
+    <header class="lift-header">
+      <a class="lift-brand" href="#arrival" aria-label="Rithvik Kasarla, arrival floor">RITHVIK KASARLA <span>WORLD LIFT</span></a>
+      <nav aria-label="Lift floors">
+        <a href="#projects">Projects</a>
+        <a href="#papers">Papers</a>
+        <a href="#notes">Notes</a>
+        <a href="#workshop">Workshop</a>
       </nav>
     </header>
 
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="status-line"><span aria-hidden="true"></span> Perpetually locked in</p>
-          <h1 id="hero-title">AI should <em>do things.</em></h1>
-          <p class="lede">
-            I build the loops that make it happen—agents that listen, look, act,
-            inspect the result, and try again in the messy workflows where demos
-            usually break.
-          </p>
-          <div class="hero-actions" aria-label="Primary links">
-            <a class="button primary" href="#work">Explore the systems <span aria-hidden="true">↘</span></a>
-            <a class="button secondary" href="blog/index.html">Read field notes</a>
-          </div>
-          <p class="hero-proof">Cornell Tech <span>×</span> Solo ICLR 2026 researcher <span>×</span> Founder-engineer</p>
-        </div>
+    <div class="lift-cabin" aria-hidden="true">
+      <div class="cabin-canopy"><span>R. KASARLA · CAR 17</span></div>
+      <div class="cabin-post cabin-post-left"><i></i></div>
+      <div class="cabin-post cabin-post-right"></div>
+      <div class="lift-drive"><img data-scroll-gear src="assets/prototype-world/gears/Gear 10 - Bronze_00.png" alt="" /></div>
+      <div class="lift-pipe-module lift-pipe-module-left">
+        <img class="lift-pipe-sprite" src="assets/prototype-world/pipe-elbow.png" alt="" />
+        <span class="lift-pipe-clamp" aria-hidden="true"></span>
+        <span class="lift-pipe-terminal" aria-hidden="true"></span>
+        <img class="lift-pipe-valve" data-scroll-gear src="assets/prototype-world/gears/Gear 6 - Bronze_00.png" alt="" />
+        <div class="lift-steam"><i></i><i></i><i></i></div>
+      </div>
+      <div class="lift-pipe-module lift-pipe-module-right">
+        <img class="lift-pipe-sprite" src="assets/prototype-world/pipe-elbow.png" alt="" />
+        <span class="lift-pipe-clamp" aria-hidden="true"></span>
+        <span class="lift-pipe-terminal" aria-hidden="true"></span>
+        <img class="lift-frame-gear" data-scroll-gear src="assets/prototype-world/gears/Gear 9 - Bronze_00.png" alt="" />
+      </div>
+      <div class="floor-dial"><i></i><b>00</b><small>DEPTH</small></div>
+      <div class="cabin-console"><small>CAR CONTROL</small><span></span><span></span><span></span><i></i></div>
+      <div class="cabin-floor"><div></div></div>
+    </div>
 
-        <aside class="machine" aria-label="Rithvik's system map">
-          <div class="machine-bar">
-            <span></span><span></span><span></span>
-            <p>world-interface.sys</p>
-            <b>LIVE</b>
+    <main id="main" class="world-lift">
+      <section class="lift-floor floor-arrival" id="arrival" data-floor="00" aria-labelledby="site-title">
+        <div class="airship" aria-hidden="true"><img src="assets/prototype-world/airship.png" alt="" /></div>
+        <div class="floor-copy arrival-copy">
+          <p class="floor-kicker">Observation lift / upper city</p>
+          <h1 id="site-title">Rithvik<br />Kasarla.</h1>
+          <div class="manifest">
+            <span>Builder / researcher / engineer</span>
+            <p>I build agents that can listen, look, act, recover, and show their work—especially when the real world is messy enough to disagree.</p>
           </div>
-          <div class="machine-canvas">
-            <svg class="signal-map" viewBox="0 0 560 420" role="img" aria-labelledby="system-map-title system-map-desc">
-              <title id="system-map-title">Agent system loop</title>
-              <desc id="system-map-desc">Voice, vision, and memory flow through an agent core to real-world action, then back through verification.</desc>
-              <defs>
-                <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#5ee7f7" />
-                  <stop offset="0.52" stop-color="#a975ff" />
-                  <stop offset="1" stop-color="#f65fc1" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-              </defs>
-              <g class="map-lines" fill="none" stroke="url(#flow)" stroke-width="2">
-                <path d="M106 94 C190 94 185 185 268 202" />
-                <path d="M108 312 C190 312 188 232 268 216" />
-                <path d="M452 94 C370 94 375 180 292 201" />
-                <path d="M292 218 C370 235 373 314 452 314" />
-                <path class="return-path" d="M452 334 C520 360 520 32 452 72" />
-              </g>
-              <g class="map-node input-node" transform="translate(46 54)">
-                <rect width="124" height="76" rx="12" />
-                <text x="18" y="30">01 / LISTEN</text>
-                <text class="node-sub" x="18" y="53">voice · intent</text>
-              </g>
-              <g class="map-node input-node" transform="translate(46 274)">
-                <rect width="124" height="76" rx="12" />
-                <text x="18" y="30">02 / SEE</text>
-                <text class="node-sub" x="18" y="53">camera · state</text>
-              </g>
-              <g class="map-core" transform="translate(218 153)" filter="url(#glow)">
-                <circle cx="62" cy="62" r="59" />
-                <circle class="core-orbit" cx="62" cy="62" r="44" />
-                <text x="62" y="57" text-anchor="middle">AGENT</text>
-                <text class="node-sub" x="62" y="78" text-anchor="middle">inspect / decide</text>
-              </g>
-              <g class="map-node output-node" transform="translate(390 54)">
-                <rect width="124" height="76" rx="12" />
-                <text x="18" y="30">03 / MEMORY</text>
-                <text class="node-sub" x="18" y="53">context · traces</text>
-              </g>
-              <g class="map-node output-node" transform="translate(390 274)">
-                <rect width="124" height="76" rx="12" />
-                <text x="18" y="30">04 / ACT</text>
-                <text class="node-sub" x="18" y="53">tools · world</text>
-              </g>
-              <text class="verify-label" x="492" y="210" transform="rotate(90 492 210)">VERIFY → LOOP</text>
-            </svg>
-            <div class="machine-log" aria-hidden="true">
-              <span>&gt; input</span><b> messy reality</b>
-              <span>&gt; method</span><b> observe → act → verify</b>
-              <span>&gt; state</span><b class="online"> building</b>
-            </div>
-          </div>
-        </aside>
+        </div>
+        <p class="floor-stamp">FLOOR 00 · ARRIVAL</p>
       </section>
 
-      <section class="signal-strip" aria-label="Selected signals">
-        <div>
-          <span class="signal-index">01</span>
-          <p><strong>Research</strong> Solo ICLR 2026 workshop poster</p>
+      <section class="lift-floor floor-projects" id="projects" data-floor="01" aria-labelledby="projects-title">
+        <div class="floor-copy collection-copy">
+          <p class="floor-kicker">Systems depot / selected work</p>
+          <h2 id="projects-title">Projects that<br />touch the world.</h2>
+          <div class="collection-grid project-grid">
+            <a class="collection-card" href="https://github.com/RithvikKasarla/Agent-Voice">
+              <small>01 / VOICE INTERFACE</small><strong>Agent Voice</strong><span>Wake word, local transcription, streaming speech, persistent context, and audio ducking.</span>
+            </a>
+            <a class="collection-card" href="https://github.com/RithvikKasarla/HermesCamera">
+              <small>02 / PHYSICAL INTERFACE</small><strong>HermesCamera</strong><span>Capture, move, inspect: a camera the agent can actually operate.</span>
+            </a>
+            <a class="collection-card" href="https://github.com/RithvikKasarla/agent-core">
+              <small>03 / RUNTIME</small><strong>agent-core</strong><span>Ordered events, lifecycle guards, idempotency, and traces for agent turns.</span>
+            </a>
+            <article class="collection-card">
+              <small>04 / KNOWLEDGE GRAPH WORK</small><strong>VannaLabsKG</strong><span>Knowledge graph tools and retrieval experiments from Vanna Labs.</span>
+            </article>
+          </div>
         </div>
-        <div>
-          <span class="signal-index">02</span>
-          <p><strong>Interfaces</strong> Voice, cameras, documents, tools</p>
-        </div>
-        <div>
-          <span class="signal-index">03</span>
-          <p><strong>Operating principle</strong> Reality gets the final edit</p>
-        </div>
+        <p class="floor-stamp">FLOOR 01 · PROJECTS</p>
       </section>
 
-      <section class="content-section work-section" id="work">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">Selected systems / current</p>
-            <h2>Machines with<br />a way back to reality.</h2>
+      <section class="lift-floor floor-papers" id="papers" data-floor="02" aria-labelledby="papers-title">
+        <div class="floor-copy collection-copy align-right">
+          <p class="floor-kicker">Archive district / research</p>
+          <h2 id="papers-title">Papers + research<br />with a route to proof.</h2>
+          <div class="collection-grid paper-grid">
+            <a class="collection-card featured-card" href="https://iclr.cc/virtual/2026/10016518">
+              <small>ICLR 2026 WORKSHOP</small><strong>Chunk-centric retrieval</strong><span>Financial reasoning should stay traceable from entity to relationship to the source chunk.</span>
+            </a>
+            <a class="collection-card" href="blog/chunk-centric-retrieval.html">
+              <small>RESEARCH NOTE</small><strong>Retrieval is an interface problem</strong><span>Why evidence needs to be navigable, not merely cited after the fact.</span>
+            </a>
           </div>
-          <p class="section-intro">
-            The throughline is feedback. Each system can sense enough of the
-            world to take an action—and leave enough of a trace to understand
-            what happened next.
-          </p>
         </div>
-
-        <div class="project-grid">
-          <article class="project-card project-voice">
-            <div class="project-topline">
-              <span>01 / Voice interface</span>
-              <span>Python · Local AI</span>
-            </div>
-            <div class="project-visual voice-visual" aria-hidden="true">
-              <div class="waveform">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <p>WAKE → LISTEN → THINK → SPEAK</p>
-            </div>
-            <div class="project-copy">
-              <p class="tag">Always-on / local-first / multi-turn</p>
-              <h3>Agent Voice</h3>
-              <p>
-                A voice front-end for Hermes with wake-word detection, local
-                speech-to-text, streaming TTS, persistent context, and desktop
-                audio ducking.
-              </p>
-              <a href="https://github.com/RithvikKasarla/Agent-Voice">Inspect the build <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="project-card project-camera">
-            <div class="project-topline">
-              <span>02 / Physical interface</span>
-              <span>Python · Hardware</span>
-            </div>
-            <div class="project-visual camera-visual" aria-hidden="true">
-              <div class="viewfinder">
-                <span class="corner corner-top-left"></span><span class="corner corner-top-right"></span>
-                <span class="corner corner-bottom-left"></span><span class="corner corner-bottom-right"></span>
-                <div class="reticle"></div>
-                <p>PTZ / ROOM_SCAN_04</p>
-              </div>
-            </div>
-            <div class="project-copy">
-              <p class="tag">Capture / move / inspect</p>
-              <h3>HermesCamera</h3>
-              <p>
-                Camera control for Hermes: stills, timed video, smooth pan/tilt/
-                zoom, room scans, and AI interpretation through local tooling.
-              </p>
-              <a href="https://github.com/RithvikKasarla/HermesCamera">Inspect the build <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="project-card project-core">
-            <div class="project-topline">
-              <span>03 / Runtime</span>
-              <span>TypeScript · Agents</span>
-            </div>
-            <div class="project-visual core-visual" aria-hidden="true">
-              <ol>
-                <li><span>001</span> session.open <b>ok</b></li>
-                <li><span>002</span> turn.started <b>ok</b></li>
-                <li><span>003</span> tool.requested <b>pending</b></li>
-                <li><span>004</span> state.commit <b>queued</b></li>
-              </ol>
-            </div>
-            <div class="project-copy">
-              <p class="tag">Ordered / deterministic / inspectable</p>
-              <h3>agent-core</h3>
-              <p>
-                Runtime primitives for deterministic agent turns: ordered event
-                streams, lifecycle guards, idempotency, session state, and
-                pluggable execution hooks.
-              </p>
-              <a href="https://github.com/RithvikKasarla/agent-core">Inspect the build <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="project-card project-product">
-            <div class="project-topline">
-              <span>04 / Operational product</span>
-              <span>Next.js · Prisma</span>
-            </div>
-            <div class="project-visual product-visual" aria-hidden="true">
-              <div><span>01</span><b>INTAKE</b></div>
-              <i></i>
-              <div><span>02</span><b>MATCH</b></div>
-              <i></i>
-              <div><span>03</span><b>BOOK</b></div>
-            </div>
-            <div class="project-copy">
-              <p class="tag">People / workflow / persistence</p>
-              <h3>ProductStudio</h3>
-              <p>
-                A home-care marketplace MVP with family and caregiver flows,
-                persistent intake and matching, booking, sessions, and payment
-                screens.
-              </p>
-              <a href="https://github.com/RithvikKasarla/ProductStudio">Inspect the build <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-        </div>
+        <p class="floor-stamp">FLOOR 02 · PAPERS</p>
       </section>
 
-      <section class="research-section" id="research">
-        <div class="content-section research-grid">
-          <div class="research-title">
-            <p class="eyebrow">Research signal / ICLR 2026</p>
-            <h2>Beyond<br />vector search.</h2>
-            <a class="button secondary" href="https://iclr.cc/virtual/2026/10016518">View workshop page <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="research-copy">
-            <p class="research-lede">
-              Hallucination-free financial reasoning needs a path you can
-              follow, not just an answer that sounds right.
-            </p>
-            <p>
-              My solo workshop research explores chunk-centric knowledge graphs:
-              a retrieval path that stays auditable from the thing being asked
-              about to the source that supports it.
-            </p>
-            <div class="retrieval-path" aria-label="Retrieval path: entity to relationship to source chunk">
-              <span><small>01</small> Entity</span><i>→</i>
-              <span><small>02</small> Relationship</span><i>→</i>
-              <span><small>03</small> Source chunk</span>
-            </div>
+      <section class="lift-floor floor-notes" id="notes" data-floor="03" aria-labelledby="notes-title">
+        <div class="floor-copy collection-copy">
+          <p class="floor-kicker">Signal room / field notes</p>
+          <h2 id="notes-title">Thinking in public<br />about the loop.</h2>
+          <div class="note-list">
+            <a href="blog/loop-engineering.html"><small>AGENTS</small><span>Loop Engineering</span><b>↗</b></a>
+            <a href="blog/voice-agents-latency.html"><small>VOICE</small><span>Voice agents are latency products first</span><b>↗</b></a>
+            <a href="blog/cameras-as-agent-tools.html"><small>TOOLS</small><span>Cameras as agent tools</span><b>↗</b></a>
+            <a href="blog/index.html"><small>ARCHIVE</small><span>All field notes</span><b>↗</b></a>
           </div>
         </div>
+        <p class="floor-stamp">FLOOR 03 · NOTES</p>
       </section>
 
-      <section class="content-section about-section" id="about">
-        <div class="about-card">
-          <div class="profile-lockup">
-            <img src="https://avatars.githubusercontent.com/u/28653647?v=4" alt="Illustrated portrait of Rithvik Kasarla" />
-            <span aria-hidden="true"></span>
+      <footer class="lift-floor floor-workshop" id="workshop" data-floor="04" aria-labelledby="workshop-title">
+        <div class="floor-copy workshop-copy">
+          <p class="floor-kicker">Lower workshop / experiments</p>
+          <h2 id="workshop-title">More questionable<br />machinery below.</h2>
+          <div class="collection-grid workshop-grid">
+            <article class="collection-card">
+              <small>DESKTOP COMPANIONS</small><strong>Little agents</strong><span>Experiments in giving local software presence, personality, and a physical sense of place.</span>
+            </article>
+            <article class="collection-card">
+              <small>FLASH ARCHAEOLOGY</small><strong>Old web machinery</strong><span>Digging through strange interaction patterns worth carrying forward—not copying.</span>
+            </article>
+            <article class="collection-card">
+              <small>LOCAL AI</small><strong>Things that stay close</strong><span>Explorations in tools that live on your machine and respect the room around them.</span>
+            </article>
           </div>
-          <div class="about-copy">
-            <p class="eyebrow">Builder profile</p>
-            <h2>Founder. Researcher.<br />Engineer. Side-quest enjoyer.</h2>
-            <p>
-              I studied computer science at Case Western and Cornell Tech. I’m
-              most interested in software that has to survive contact with
-              operators, devices, documents, and imperfect state—not just ace a
-              clean benchmark.
-            </p>
-            <p class="side-quest">
-              Current side quests: animated desktop companions, old Flash
-              archaeology, and making local agents feel a little more alive.
-            </p>
-          </div>
-          <div class="principles" aria-label="Working principles">
-            <p><span>01</span> Ship fast enough for reality to correct the idea.</p>
-            <p><span>02</span> Make the system inspectable before making it clever.</p>
-            <p><span>03</span> Connect intelligence to action.</p>
+          <div class="workshop-links">
+            <a href="https://github.com/RithvikKasarla">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/rithvik-kasarla">Send a transmission ↗</a>
           </div>
         </div>
-      </section>
-
-      <section class="content-section writing-section" id="writing">
-        <div class="section-heading writing-heading">
-          <div>
-            <p class="eyebrow">Field notes</p>
-            <h2>Thinking in public.</h2>
-          </div>
-          <a class="text-link" href="blog/index.html">All notes <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="post-list">
-          <a class="post-row" href="blog/loop-engineering.html">
-            <span class="post-number">01</span>
-            <span class="post-title">Loop Engineering</span>
-            <span class="post-topic">Agents</span>
-            <time datetime="2026-06-30">Jun 30, 2026</time>
-          </a>
-          <a class="post-row" href="blog/chunk-centric-retrieval.html">
-            <span class="post-number">02</span>
-            <span class="post-title">Chunk-centric retrieval is an interface problem</span>
-            <span class="post-topic">Research</span>
-            <time datetime="2026-06-20">Jun 20, 2026</time>
-          </a>
-          <a class="post-row" href="blog/voice-agents-latency.html">
-            <span class="post-number">03</span>
-            <span class="post-title">Voice agents are latency products first</span>
-            <span class="post-topic">Voice</span>
-            <time datetime="2026-06-20">Jun 20, 2026</time>
-          </a>
-          <a class="post-row" href="blog/cameras-as-agent-tools.html">
-            <span class="post-number">04</span>
-            <span class="post-title">Cameras are agent tools, not just sensors</span>
-            <span class="post-topic">Hardware</span>
-            <time datetime="2026-06-20">Jun 20, 2026</time>
-          </a>
-        </div>
-      </section>
+        <p class="floor-stamp">FLOOR 04 · WORKSHOP</p>
+      </footer>
     </main>
 
-    <footer class="site-footer" id="contact">
-      <div class="contact-copy">
-        <p class="eyebrow">Open channel</p>
-        <h2>Building something<br />that should exist?</h2>
-        <p>If it involves AI, data, robots, or a stubborn real-world workflow, I want to hear about it.</p>
-        <a class="button primary" href="https://www.linkedin.com/in/rithvik-kasarla">Start a conversation <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="footer-meta">
-        <div class="footer-links">
-          <a href="https://github.com/RithvikKasarla">GitHub <span aria-hidden="true">↗</span></a>
-          <a href="https://www.linkedin.com/in/rithvik-kasarla">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a href="https://x.com/HeptadecimalNum">X <span aria-hidden="true">↗</span></a>
-          <a href="https://www.instagram.com/rithvik.journal/">Journal <span aria-hidden="true">↗</span></a>
-        </div>
-        <p><span aria-hidden="true"></span> Status: perpetually locked in</p>
-        <small>© 2026 Rithvik Kasarla / Built close to the metal.</small>
-      </div>
-    </footer>
+    <script src="assets/world-lift.js?v=4"></script>
   </body>
 </html>
