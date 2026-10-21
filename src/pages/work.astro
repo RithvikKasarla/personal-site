@@ -1,0 +1,431 @@
+---
+import Section from '../layouts/Section.astro';
+import Flat from '../components/Flat.astro';
+import Ridge from '../components/Ridge.astro';
+import Signboard from '../components/Signboard.astro';
+import TrailEnd from '../components/TrailEnd.astro';
+
+const builds = [
+  {
+    name: 'Agent Voice',
+    line: 'Say "Hey Houston" and talk to your agent. Wake word, speech-to-text and streaming text-to-speech, all running on your own machine.',
+    tags: ['Voice', 'Local'],
+    href: 'https://github.com/RithvikKasarla/Agent-Voice',
+  },
+  {
+    name: 'HermesCamera',
+    line: 'Gives an agent eyes on a real Insta360 Link: it aims the pan-tilt-zoom camera, records, and describes what it sees.',
+    tags: ['Hardware', 'Vision'],
+    href: 'https://github.com/RithvikKasarla/HermesCamera',
+  },
+  {
+    name: 'agent-core',
+    line: 'A deterministic agent runtime in TypeScript: typed turns, event streams and sessions that are safe to retry. On npm as vanna-agent-core.',
+    tags: ['TypeScript', 'npm'],
+    href: 'https://github.com/RithvikKasarla/agent-core',
+  },
+  {
+    name: 'Club Penguin Computer Pet',
+    line: 'A Club Penguin desktop pet that reacts to whatever your coding agent is doing.',
+    tags: ['Desktop', 'Fun'],
+    href: 'https://github.com/RithvikKasarla/ClubPenguinComputerPet',
+  },
+  {
+    name: 'ReelAutomation',
+    line: 'Takes a short-form video from first idea to published post, on its own.',
+    tags: ['Agents', 'Video'],
+    href: 'https://github.com/RithvikKasarla/ReelAutomation',
+  },
+  {
+    name: 'Beyond Vector Search',
+    line: 'My ICLR 2026 workshop paper: a knowledge graph that makes every financial answer traceable to its source.',
+    tags: ['Paper'],
+    href: '/research',
+    cta: 'Read it →',
+  },
+];
+
+// Jobs before Centura, hung on the fence. Numbers are the resume's.
+const jobs = [
+  {
+    company: 'Verition Fund Management',
+    role: 'Intern, Global AI Team',
+    when: 'Summer 2025',
+    big: '16×',
+    bigLabel: 'faster risk dashboard',
+    line: "Rebuilt the P&L and risk dashboard's data backend on Apache Arrow and Hazelcast: ~8s down to ~0.5s. Then tested vendor MCP servers against what the quants needed, found ~10 gaps, and built the in-house one that lets LLMs read and explain SEC filings.",
+  },
+  {
+    company: 'TIAA',
+    role: 'Data Science Intern',
+    when: 'Summer 2024',
+    big: '356',
+    bigLabel: 'code-scan issues fixed',
+    line: 'Cleaned up a Java customer-data system: 8 security vulnerabilities and 356 code-scan issues fixed, and its release versioning put right.',
+  },
+  {
+    company: 'Art Sentry',
+    role: 'AI Software Engineer',
+    when: 'Spring 2024',
+    big: 'Live',
+    bigLabel: 'museum camera alerts',
+    line: 'Built a PyTorch CNN that spots people moving in live museum camera video and raises theft and vandalism alerts in real time.',
+  },
+];
+
+// Hung three to a line on wide screens; narrower screens drop the lines and use one grid.
+// The top line is tied between two trees, the bottom one between two stakes.
+const lines = [
+  { pole: 'tree', items: builds.slice(0, 3) },
+  { pole: 'post', items: builds.slice(3) },
+];
+---
+
+<Section
+  title="Work · Rithvik Kasarla"
+  description="Centura Property Compliance, AI agents that file rental licenses, plus the agents, runtimes and hardware hacks Rithvik builds."
+  heading="Work"
+>
+  <Flat slot="scene" src="/art/town.webp" class="w-town" enter="right" depth={0.7} order={3} />
+
+  <!-- The nearest hill: Centura's signboard, up on two stakes in front of the town. -->
+  <Ridge wave={1} depth={0}>
+    <Signboard>
+      <article class="card centura" data-reveal>
+        <span class="stamp" aria-hidden="true">Licensed</span>
+        <p class="venue">Co-founder &amp; CTO · since February 2026</p>
+        <h2>Centura Property Compliance</h2>
+        <p class="plain">AI agents that file rental licenses for landlords.</p>
+
+        <dl class="stats">
+          <div><dt data-count="100">~100</dt><dd>properties covered</dd></div>
+          <div><dt>60+</dt><dd>property-manager interviews before building</dd></div>
+          <div><dt>1</dt><dd>engineer: I built the platform and its agents</dd></div>
+        </dl>
+
+        <p>
+          Every city writes its rental-license rules differently. Centura does the filing so landlords
+          don't have to learn them. Two agents do the work:
+        </p>
+        <ol class="agents">
+          <li><strong>The research agent</strong> reads a city's rules and writes a playbook for filing there.</li>
+          <li>
+            <strong>The filing agent</strong> follows that playbook to draft the application, quoting the
+            evidence behind each answer.
+          </li>
+        </ol>
+        <p>
+          To keep them honest, a test environment hands the agents mock license renewals and scores how
+          accurately they file. Beyond the code, I helped take Centura from idea to a working business:
+          forming the company, hiring the filing team and onboarding customers.
+        </p>
+
+        <a class="tag cta" href="https://centuraproperty.com" rel="noopener">Visit centuraproperty.com →</a>
+      </article>
+    </Signboard>
+  </Ridge>
+
+  <!-- The next hill down: the jobs before Centura, nailed along a fence. -->
+  <Ridge wave={2} depth={1}>
+    <Flat class="jobs-flat" enter="up" exit="down" depth={0} order={3}>
+      <section class="jobs" aria-labelledby="jobs-title">
+        <h2 id="jobs-title" class="section-sign">Before Centura</h2>
+        <div class="fence">
+          {
+            jobs.map((j) => (
+              <article class="job" data-reveal="swing">
+                <p class="when">{j.when}</p>
+                <h3>{j.company}</h3>
+                <p class="role">{j.role}</p>
+                <p class="big">
+                  {j.big}
+                  <span>{j.bigLabel}</span>
+                </p>
+                <p class="desc">{j.line}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </Flat>
+  </Ridge>
+
+  <!-- Then the things built on the side, pegged to washing lines. -->
+  <Ridge wave={3} depth={2}>
+    <Flat class="builds-flat" enter="up" exit="down" depth={0} order={4}>
+      <section class="builds" aria-labelledby="builds-title">
+        <h2 id="builds-title" class="section-sign builds-title">Things I've built</h2>
+        {
+          lines.map((line) => (
+            <div class:list={['line', `on-${line.pole}`]}>
+              <svg class="twine" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 1 Q50 9 100 1" />
+              </svg>
+              <img class="pole l" src={`/art/${line.pole}.webp`} alt="" loading="lazy" />
+              <img class="pole r" src={`/art/${line.pole}.webp`} alt="" loading="lazy" />
+              {line.items.map((b) => (
+                <article class="hang" data-reveal="swing">
+                  <h3>{b.name}</h3>
+                  <p>{b.line}</p>
+                  <ul class="chips">
+                    {b.tags.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                  <a
+                    href={b.href}
+                    rel={b.href.startsWith('http') ? 'noopener' : undefined}
+                    aria-label={`${(b.cta ?? 'See the code').replace(' →', '')}: ${b.name}`}
+                  >
+                    {b.cta ?? 'See the code →'}
+                  </a>
+                </article>
+              ))}
+            </div>
+          ))
+        }
+      </section>
+    </Flat>
+  </Ridge>
+
+  <TrailEnd next={{ label: "Research", href: "/research" }} depth={3} />
+</Section>
+
+<style>
+  /* On the far hill: the first ridge's crest covers its foot. */
+  :global(.scene .w-town) { left: 58%; bottom: 20%; width: 34%; }
+
+  /* ---- Centura ---- */
+  .agents { padding-left: 1.3em; }
+  .agents li { margin-bottom: 0.5em; }
+  .agents li::marker { font: 700 1em var(--font-sign); color: var(--accent); }
+
+  /* A rubber stamp that thumps onto the card once it's in view. */
+  .stamp {
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    padding: 4px 14px;
+    border: 4px solid #c2412a;
+    border-radius: 8px;
+    font: 700 22px var(--font-sign);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c2412a;
+    rotate: 9deg;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  :global(.await-reveal) .stamp { opacity: 0; }
+  :global(.revealed) .stamp { animation: stamp 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) 0.15s backwards; }
+  @keyframes stamp {
+    from { opacity: 0; scale: 2.6; rotate: 2deg; }
+    60% { opacity: 0.95; }
+  }
+  /* The card takes the hit. */
+  :global(.revealed.centura) { animation: thump 0.35s ease-out 0.38s; }
+  @keyframes thump {
+    30% { translate: 0 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(.revealed) .stamp,
+    :global(.revealed.centura) { animation: none; }
+  }
+
+  /* ---- jobs nailed to a picket fence ---- */
+  :global(.jobs-flat) {
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .fence {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 64px 3% 0;
+    /* The fence runs the full width behind the cards (the tile is cut gap-to-gap, so it repeats). */
+    background: url('/art/fence-tile.webp') center top / auto 250px repeat-x;
+  }
+  .job {
+    --tilt: 1deg;
+    position: relative;
+    padding: 30px 24px 24px;
+    background: var(--paper);
+    border: 6px solid var(--kraft);
+    border-radius: 4px;
+    box-shadow: 0 14px 26px rgb(30 20 8 / 0.35);
+    rotate: var(--tilt);
+    transform-origin: 50% 0;
+  }
+  .job:nth-child(2) { --tilt: -1.4deg; margin-top: 18px; }
+  .job:nth-child(3) { --tilt: 0.6deg; margin-top: 6px; }
+  /* Two nails holding it to the fence. */
+  .job::before,
+  .job::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #d8d2c4, #8a8478 60%, #5b564d);
+    box-shadow: 0 2px 2px rgb(30 20 8 / 0.45);
+  }
+  .job::before { left: 14px; }
+  .job::after { right: 14px; }
+  .job .when { margin: 0; font: 600 13px var(--font-sign); letter-spacing: 0.04em; text-transform: uppercase; color: var(--kraft-dark); }
+  .job h3 { margin: 0.25em 0 0; font: 700 22px / 1.2 var(--font-sign); }
+  .job .role { margin: 0.1em 0 0; font-weight: 600; color: var(--ink-soft); }
+  .job .big {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0.7em 0 0.5em;
+    padding: 10px 14px;
+    background: #efe2c9;
+    border: 2px dashed var(--kraft);
+    border-radius: 8px;
+    font: 700 30px / 1 var(--font-sign);
+    color: var(--accent);
+  }
+  .job .big span { font: 600 15px / 1.3 var(--font-body); color: var(--ink); }
+  .job .desc { margin: 0; font-size: 16px; line-height: 1.55; }
+
+  /* ---- builds on a washing line ---- */
+  :global(.builds-flat) {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .line {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    padding: 34px 2% 0;
+    margin-bottom: 56px;
+  }
+  .twine {
+    position: absolute;
+    left: -2%;
+    top: 0;
+    width: 104%;
+    height: 44px;
+    overflow: visible;
+  }
+  /* What each line is tied to, out in the margins: off by default, shown where there's room. */
+  .pole { display: none; }
+  .twine path {
+    fill: none;
+    stroke: var(--twine);
+    stroke-width: 3;
+    stroke-dasharray: 7 3;
+    vector-effect: non-scaling-stroke;
+  }
+  .hang {
+    --tilt: -1.6deg;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 22px 20px;
+    background: var(--paper);
+    border: 6px solid var(--kraft);
+    border-radius: 4px;
+    box-shadow: 0 14px 26px rgb(30 20 8 / 0.35);
+    transform-origin: 50% -18px;
+    rotate: var(--tilt);
+    transition: rotate 0.6s cubic-bezier(0.3, 1.7, 0.5, 1);
+  }
+  .hang:nth-child(3) { --tilt: 1.2deg; margin-top: 8px; } /* the middle card hangs at the sag */
+  .hang:nth-child(4) { --tilt: -0.6deg; }
+  .hang:hover { rotate: calc(var(--tilt) * -1.6); }
+  /* The clothes peg. */
+  .hang::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    width: 12px;
+    height: 34px;
+    translate: -50% 0;
+    background: linear-gradient(90deg, #b07a43 0 45%, #8c5a2b 45% 55%, #b07a43 55%);
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgb(30 20 8 / 0.4);
+  }
+  .hang h3 { margin: 0 0 0.4em; font: 700 21px / 1.2 var(--font-sign); }
+  .hang p { flex: 1; margin: 0 0 14px; font-size: 16px; line-height: 1.55; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 14px; list-style: none; }
+  .chips li {
+    padding: 2px 10px;
+    border: 2px dashed var(--kraft);
+    border-radius: 999px;
+    font: 600 13px var(--font-sign);
+    color: var(--kraft-dark);
+  }
+  .hang a {
+    align-self: flex-start;
+    font: 600 16px var(--font-sign);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .hang a:hover { text-decoration: underline; }
+  .hang a:focus-visible { outline: none; }
+  .hang:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .hang a::after { content: ''; position: absolute; inset: 0; } /* the whole card is the link */
+
+  @media (min-width: 1280px) {
+    .line {
+      /* --gutter: the margin beside the line; the poles stand in the middle of it. */
+      --gutter: calc((100vw - 1040px) / 2);
+      --reach: calc(var(--gutter) * 0.5);
+    }
+    .twine { left: calc(-1 * var(--reach)); width: calc(100% + 2 * var(--reach)); }
+    .pole {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      translate: -50% 0;
+      filter: drop-shadow(0 8px 8px rgb(40 22 8 / 0.35));
+    }
+    .pole.l { left: calc(-1 * var(--reach)); }
+    .pole.r { left: calc(100% + var(--reach)); }
+    /* Tied round the trunk, two-thirds of the way down the tree. */
+    .on-tree .pole { width: min(200px, var(--gutter) * 0.85); top: calc(4px - min(200px, var(--gutter) * 0.85) * 1.41 * 0.66); }
+    .on-tree .pole.r { scale: -1 1; }
+    .on-post .pole { width: 22px; height: 210px; top: -14px; }
+  }
+
+  @media (max-width: 900px) {
+    .builds { display: grid; gap: 52px 36px; }
+    .builds-title { grid-column: 1 / -1; margin-bottom: 0; }
+    .line { display: contents; }
+    .twine { display: none; }
+    .hang:nth-child(3) { margin-top: 0; }
+    /* Each card on its own short string instead of a shared line. */
+    .hang::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      width: 2px;
+      height: 46px;
+      background: var(--twine);
+      z-index: -1;
+    }
+    .fence { grid-template-columns: 1fr; gap: 40px; padding: 48px 4% 0; background-size: auto 200px; }
+    .job:nth-child(n) { margin-top: 0; }
+  }
+  @media (max-width: 900px) and (min-width: 560px) {
+    .fence { grid-template-columns: 1fr 1fr; }
+    .job:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 16px); }
+  }
+  @media (max-width: 900px) and (min-width: 560px) {
+    .builds { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    :global(.scene .w-town) { left: 40%; width: 68%; bottom: 16%; }
+    /* Stamped over the card's top edge, clear of the venue line. */
+    .stamp { top: -20px; right: 6px; font-size: 16px; }
+  }
+</style>

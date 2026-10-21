@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website, a handmade cardboard diorama world. Image 2 is the mood. Make the asset below in exactly the style and materials of image 1, so it looks like it belongs in the same set.
+
+The asset: a little cardboard village nestled on a hillside: a handful of cottages, a windmill, a few small trees and bushes, grouped as one cluster. It sits in the middle distance of the home page landscape, where the trail leads. Wide landscape.
+
+Practical details: use your image generation tool. One cluster only, isolated and viewed straight on, with no cast shadow (the scene adds its own lighting) and no text, letters or signs with writing anywhere. Put it on a plain flat solid bright magenta (#FF00FF) background so I can cut it out. Save it as assets/raw/village.png and tell me the path.

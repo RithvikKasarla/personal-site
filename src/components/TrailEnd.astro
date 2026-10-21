@@ -1,0 +1,74 @@
+---
+// The last ridge of a section page: the signpost on to the rest of the site, behind a row of bushes.
+// Its top arm is the next stop on the story tour ("Explore the story" on the hub starts it), then the
+// trailhead, then whichever sections are left.
+import Ridge from './Ridge.astro';
+import Signpost from './Signpost.astro';
+
+const SECTIONS = [
+  { label: 'Work', href: '/work' },
+  { label: 'Research', href: '/research' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/about' },
+];
+const TRAILHEAD = { label: 'Trailhead', href: '/' };
+
+interface Props {
+  /** The next stop on the tour; the trailhead when there isn't one. */
+  next?: { label: string; href: string };
+  /** One nearer than the page's last ridge. */
+  depth: number;
+  wave?: 1 | 2 | 3;
+}
+const { next = TRAILHEAD, depth, wave = 1 } = Astro.props;
+
+const here = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [next, TRAILHEAD, ...SECTIONS]
+  .filter((l, i, all) => l.href !== here && all.findIndex((m) => m.href === l.href) === i)
+  .slice(0, 4);
+---
+
+<Ridge wave={wave} depth={depth} class="trail-end">
+  <div class="trail">
+    <img class="bush l" src="/art/bush.webp" alt="" loading="lazy" />
+    <Signpost links={links} class="trail-post" label="Where next" depth={0.3} order={5} />
+    <img class="bush r" src="/art/bush.webp" alt="" loading="lazy" />
+  </div>
+  <div class="front-row" aria-hidden="true"></div>
+</Ridge>
+
+<style>
+  :global(.trail-end) {
+    display: flex;
+    flex-direction: column;
+  }
+  .trail {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(8px, 4vw, 64px);
+    padding-top: 40px;
+  }
+  .trail :global(.trail-post) {
+    position: relative;
+    width: clamp(190px, 19vw, 280px);
+  }
+  .bush {
+    width: clamp(110px, 12vw, 190px);
+    margin-bottom: 30px;
+    filter: drop-shadow(0 8px 8px rgb(40 22 8 / 0.35));
+  }
+  .bush.r { scale: -1 1; }
+  /* Bushes along the very front, hiding where the post meets the ground. */
+  .front-row {
+    position: relative;
+    z-index: 1;
+    height: clamp(56px, 7vw, 110px);
+    margin: calc(-1 * clamp(40px, 5vw, 80px)) -16px 0;
+    background: url('/art/foreground.webp') left bottom / auto 100% repeat-x;
+  }
+  @media (max-width: 640px) {
+    .bush { display: none; }
+  }
+</style>

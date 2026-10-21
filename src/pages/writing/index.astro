@@ -1,0 +1,134 @@
+---
+import Section from '../../layouts/Section.astro';
+import Flat from '../../components/Flat.astro';
+import Ridge from '../../components/Ridge.astro';
+import Signboard from '../../components/Signboard.astro';
+import TrailEnd from '../../components/TrailEnd.astro';
+import { getPosts, formatDate } from '../../scripts/posts';
+
+const posts = await getPosts();
+---
+
+<Section
+  title="Writing · Rithvik Kasarla"
+  description="Notes from building AI agents that do real work: what broke, what held, and why."
+  heading="Writing"
+>
+  <Flat slot="scene" src="/art/typewriter.webp" class="w-typewriter rock" enter="right" depth={0.8} order={3} />
+
+  <!-- A cork notice board on stakes, the posts pinned to it. -->
+  <Ridge wave={2} depth={0}>
+    <Signboard class="notice">
+      <section class="board" aria-label="Posts">
+        {
+          posts.length ? (
+            <ol class="notes">
+              {posts.map((post) => (
+                <li class="note" data-reveal="swing">
+                  <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                  {post.data.draft && <span class="draft">Draft</span>}
+                  <h2>
+                    <a href={`/writing/${post.id}`}>{post.data.title}</a>
+                  </h2>
+                  <p>{post.data.description}</p>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p class="note empty">The first post is still in the typewriter.</p>
+          )
+        }
+        <a class="tag rss" href="/rss.xml">RSS feed</a>
+      </section>
+    </Signboard>
+  </Ridge>
+
+  <TrailEnd next={{ label: "About", href: "/about" }} depth={1} />
+</Section>
+
+<style>
+  /* On the far hill: the first ridge's crest covers its foot. */
+  :global(.scene .w-typewriter) { left: 66%; bottom: 20%; width: 17%; }
+
+  :global(.signboard.notice) { max-width: 920px; }
+  /* A cork notice board in a kraft frame. */
+  .board {
+    position: relative;
+    padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 48px) 72px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .15 0 0 0 0 .05 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E"),
+      #c08a55;
+    border: 14px solid var(--kraft-dark);
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 3px #7d522a, inset 0 6px 18px rgb(40 22 8 / 0.45), 0 18px 40px rgb(30 20 8 / 0.4);
+    pointer-events: auto;
+  }
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 34px 28px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .note {
+    --tilt: -1.5deg;
+    position: relative;
+    padding: 30px 22px 22px;
+    background: var(--paper);
+    box-shadow: 0 10px 18px rgb(30 20 8 / 0.35);
+    transform-origin: 50% 12px;
+    rotate: var(--tilt);
+    transition: rotate 0.6s cubic-bezier(0.3, 1.7, 0.5, 1);
+  }
+  .note:nth-child(even) { --tilt: 1.2deg; }
+  .note:nth-child(3n) { --tilt: -0.5deg; }
+  .note:hover { rotate: calc(var(--tilt) * -1.5); }
+  /* The push pin, in goldfish orange. */
+  .note::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffb27a, var(--accent) 45%, #a8501a);
+    box-shadow: 0 3px 3px rgb(30 20 8 / 0.45);
+  }
+  .note time {
+    font: 600 13px var(--font-sign);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--kraft-dark);
+  }
+  .draft {
+    margin-left: 8px;
+    padding: 1px 8px;
+    border: 2px dashed #c2412a;
+    border-radius: 999px;
+    font: 600 12px var(--font-sign);
+    color: #c2412a;
+  }
+  .note h2 { margin: 0.35em 0 0.4em; font: 700 22px / 1.25 var(--font-sign); }
+  .note h2 a { text-decoration: none; }
+  .note h2 a::after { content: ''; position: absolute; inset: 0; } /* the whole note is the link */
+  .note:hover h2 a { color: var(--accent); }
+  .note a:focus-visible { outline: none; }
+  .note:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .note p { margin: 0; font-size: 16px; line-height: 1.55; }
+  .empty { max-width: 420px; margin: 0 auto; font: 600 20px var(--font-sign); text-align: center; }
+
+  .rss {
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    padding: 0.5em 1.2em;
+    font-size: 15px;
+  }
+
+  @media (max-width: 640px) {
+    :global(.scene .w-typewriter) { left: 52%; width: 42%; bottom: 16%; }
+  }
+</style>

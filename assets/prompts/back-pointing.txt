@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website: me as a cardboard cutout on a popsicle stick. Make another cutout of me in exactly that style and material.
+
+This time I'm seen from behind, a back three-quarter view, pointing out into the distance with one arm, like the boy in image 3 looking out over the world. Image 2 is my character turnaround; use its back 3/4 view for what the back of my hair, headphones and hoodie look like.
+
+Practical details: use your image generation tool. One portrait image, full body, on the same plain flat light background as image 1, with no text. Save it as assets/raw/back-pointing.png and tell me the path.

@@ -1,0 +1,49 @@
+---
+// One cardboard piece on the stage. Three nested boxes so each kind of motion owns its own transform:
+//   .flat       position on the stage + mouse parallax (CSS, scaled by --depth)
+//   .flat-move  enter/exit "scene change" animations (Web Animations, see scripts/stage.ts)
+//   .flat-art   idle sway/rock and hover tilts (CSS)
+interface Props {
+  src?: string;
+  alt?: string;
+  class?: string;
+  /** Where the piece comes in from: up = pops up from below on its stick, down = lowered on strings. */
+  enter?: 'up' | 'down' | 'left' | 'right';
+  /** Where it leaves to. Defaults to the nearest side edge (or back up, for hanging pieces). */
+  exit?: 'up' | 'down' | 'left' | 'right';
+  /** Mouse parallax strength: 0 = pinned, ~1.5 = closest to the viewer. */
+  depth?: number;
+  /** Enter stagger slot: lower numbers arrive first. */
+  order?: number;
+  /** Hanging pieces get strings running up off the top of the stage. */
+  strings?: boolean;
+  priority?: boolean;
+}
+const {
+  src,
+  alt = '',
+  class: className = '',
+  enter = 'up',
+  exit,
+  depth = 1,
+  order = 0,
+  strings = false,
+  priority = false,
+} = Astro.props;
+---
+
+<div
+  class:list={['flat', className, { strung: strings }]}
+  style={`--depth:${depth}`}
+  data-flat
+  data-enter={enter}
+  data-exit={exit}
+  data-order={order}
+>
+  <div class="flat-move">
+    <div class="flat-art">
+      {src && <img src={src} alt={alt} draggable="false" fetchpriority={priority ? 'high' : 'auto'} />}
+      <slot />
+    </div>
+  </div>
+</div>

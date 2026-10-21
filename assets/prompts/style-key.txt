@@ -1,0 +1,5 @@
+Make a style key image for my personal website. The site is a handmade cardboard diorama world: Paper Mario's papercraft stages crossed with a hand-built cardboard model. Images 3 and 4 are the mood. Every other asset on the site will copy the style of this image, so make it worth copying.
+
+The subject is me. Images 1 and 2 are my character, so keep the same face, curly hair, glasses, stubble, navy headphones, periwinkle hoodie with the small goldfish, cream pants and white sneakers. Reimagine me as a flat cardboard cutout standing up on a popsicle stick, like a stage puppet.
+
+Practical details: use your image generation tool. One portrait image, full body, facing the viewer, on a plain flat light background, with no text. Save it as assets/raw/style-key.png and tell me the path.

@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website, a handmade cardboard diorama world. Image 2 is the mood. Make the asset below in exactly the style and materials of image 1, so it looks like it belongs in the same set.
+
+The asset: a single tree. Portrait.
+
+Practical details: use your image generation tool. One object only, isolated and viewed straight on, with no cast shadow (the scene adds its own lighting) and no text or letters anywhere. Put it on a plain flat solid magenta (#FF00FF) background so I can cut it out. Save it as assets/raw/tree.png and tell me the path.

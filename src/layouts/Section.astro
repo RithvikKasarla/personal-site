@@ -1,0 +1,106 @@
+---
+// A section page: a short diorama header (hanging title sign, back sign to the hub, Rithvik on his
+// stick, hills), and below it the page's own Ridges, felt hills stacked down the page that the content
+// stands on, so scene and content are one diorama. Pages end with a TrailEnd ridge.
+// Pages add their own pieces to the header through the "scene" slot.
+import Base from './Base.astro';
+import Flat from '../components/Flat.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Text on the hanging sign. */
+  heading: string;
+  /** The sign is the page's h1 unless the content has its own (a blog post's title). */
+  signIsTitle?: boolean;
+}
+const { title, description, heading, signIsTitle = true } = Astro.props;
+const Sign = signIsTitle ? 'h1' : 'p';
+---
+
+<Base title={title} description={description}>
+  <div class="page">
+  <header class="scene">
+    <Flat src="/art/cloud.webp" class="s-cloud sway" enter="down" depth={0.3} order={4} strings />
+    <Flat src="/art/backdrop-near.webp" class="s-hills" enter="up" depth={0.4} order={1} />
+    <slot name="scene" />
+    <Flat
+      src="/art/style-key.webp"
+      alt="Rithvik as a cardboard cutout on a popsicle stick"
+      class="s-hero rock"
+      enter="up"
+      depth={1.3}
+      order={2}
+    />
+    <Flat src="/art/title-sign.webp" class="s-title sway" enter="down" exit="up" depth={0.6} order={0} strings>
+      <div class="sign-text"><Sign class="sign-heading">{heading}</Sign></div>
+    </Flat>
+    <Flat class="s-back" enter="left" exit="left" depth={0.5} order={1}>
+      <a class="tag back" href="/">← Trailhead</a>
+    </Flat>
+  </header>
+
+  <main class="ground" data-ground>
+    <slot />
+  </main>
+  </div>
+</Base>
+
+<style>
+  .scene {
+    --sw: 100vw;
+    position: relative;
+    flex: none;
+    height: max(46svh, 300px);
+    overflow: hidden;
+  }
+  .scene :global(.s-cloud) { left: 72%; top: 8%; width: 11%; }
+  .scene :global(.s-hills) { left: -4%; bottom: calc(-20vw + 18%); width: 108%; }
+  /* Sunk by a share of its own height (the image is ~3.16x taller than wide), so the stick hides in the
+     ground whatever the header's height. */
+  .scene :global(.s-hero) { --w: clamp(64px, 6.5vw, 120px); left: 9%; bottom: calc(var(--w) * -0.75); width: var(--w); }
+  .scene :global(.s-title) { left: 32%; top: 9%; width: 36%; }
+  .scene :global(.s-back) { left: 2.5%; top: 6%; }
+
+  .sign-heading {
+    margin: 0;
+    font-size: calc(var(--sw) * 0.045);
+    font-weight: 700;
+  }
+  .back {
+    padding: 0.6em 1.2em;
+    font-size: clamp(14px, 1.2vw, 20px);
+  }
+
+  /* Header + ridges always fill the screen, so the sky never shows below a short page. */
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .ground {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Pieces flying in tilted (and the twine lines) must never widen the page: on phones that
+       zooms the layout out and aborts the view transition. */
+    overflow-x: clip;
+  }
+  /* The last ridge has none in front of it, so it needs no room at the bottom; it stretches to the
+     bottom of the screen. */
+  .ground > :global(.ridge:last-child) { flex: 1; padding-bottom: 0; }
+
+  /* The art scales with the width, so a tall, narrow screen (a portrait tablet) gets a shorter header
+     instead of a slab of empty sky. */
+  @media (min-width: 641px) {
+    .scene { height: max(300px, min(46svh, 42vw)); }
+  }
+  @media (max-width: 640px) {
+    .scene :global(.s-hero) { --w: 16vw; left: 4%; }
+    .scene :global(.s-title) { left: 14%; width: 72%; top: 22%; }
+    .sign-heading { font-size: calc(var(--sw) * 0.08); }
+  }
+</style>

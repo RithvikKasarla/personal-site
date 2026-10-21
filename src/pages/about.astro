@@ -1,0 +1,203 @@
+---
+import Section from '../layouts/Section.astro';
+import Flat from '../components/Flat.astro';
+import Ridge from '../components/Ridge.astro';
+import Signboard from '../components/Signboard.astro';
+import TrailEnd from '../components/TrailEnd.astro';
+
+// Newest first. Only dates and numbers the resume supports.
+const trail = [
+  {
+    when: 'Feb 2026 – now',
+    what: 'Co-founder & CTO',
+    where: 'Centura Property Compliance',
+    line: 'Sole engineer on AI agents that file rental licenses for landlords, now covering ~100 properties.',
+    href: '/work',
+  },
+  {
+    when: 'May 2026',
+    what: 'MEng, Computer Science',
+    where: 'Cornell Tech',
+  },
+  {
+    when: '2026',
+    what: 'ICLR workshop poster',
+    where: 'Workshop on Advances in Financial AI',
+    line: 'Beyond Vector Search: knowledge-graph retrieval that traces every answer to its source.',
+    href: '/research',
+  },
+  {
+    when: 'Summer 2025',
+    what: 'Intern, Global AI Team',
+    where: 'Verition Fund Management',
+    line: 'Made the risk dashboard 16× faster (~8s to ~0.5s) and built an in-house MCP server for SEC filings.',
+    href: '/work',
+  },
+  {
+    when: 'May 2025',
+    what: 'BS, Computer Science',
+    where: 'Case Western Reserve University',
+  },
+  {
+    when: 'Summer 2024',
+    what: 'Data Science Intern',
+    where: 'TIAA',
+    line: 'Fixed 8 security vulnerabilities and 356 code-scan issues in a Java customer-data system.',
+  },
+  {
+    when: 'Spring 2024',
+    what: 'AI Software Engineer',
+    where: 'Art Sentry',
+    line: 'A PyTorch model that spots motion in live museum camera video and raises theft alerts.',
+  },
+];
+
+const links = [
+  { label: 'GitHub', href: 'https://github.com/RithvikKasarla' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rithvik-kasarla' },
+  { label: 'Instagram', href: 'https://www.instagram.com/rithvik.does/' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@rithvik.does' },
+];
+---
+
+<Section
+  title="About · Rithvik Kasarla"
+  description="Rithvik Kasarla: co-founder and CTO of Centura Property Compliance, Cornell Tech MEng, who loves to build, solve problems, and play around with AI."
+  heading="About"
+>
+  <Flat slot="scene" src="/art/tree.webp" class="a-tree rock" enter="up" depth={0.8} order={3} />
+
+  <Ridge wave={1} depth={0}>
+    <Signboard>
+      <article class="card intro">
+        <p class="venue">Hi, I'm Rithvik</p>
+        <h2>I love to build, solve problems, and play around with AI.</h2>
+        <p>
+          Right now that's <a href="/work">Centura</a>, where our agents file rental licenses for landlords. Before
+          that it was a hedge fund's AI team, and a research paper on making financial answers <a
+            href="/research">traceable to their source</a>.
+        </p>
+        <p>
+          I also make short videos about building things, as <strong>@rithvik.does</strong>.
+        </p>
+        <ul class="links">
+          {
+            links.map((l) => (
+              <li>
+                <a class="tag" href={l.href} rel="noopener">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </Signboard>
+  </Ridge>
+
+  <!-- The next hill down: everything so far, as stops along a path. -->
+  <Ridge wave={3} depth={1}>
+    <Flat class="trail-flat" enter="up" exit="down" depth={0} order={3}>
+      <section class="trail" aria-labelledby="trail-title">
+        <h2 id="trail-title" class="section-sign trail-title">The trail so far</h2>
+        <ol>
+          {
+            trail.map((t) => (
+              <li class="stop" data-reveal="swing">
+                <p class="when">{t.when}</p>
+                <h3>{t.what}</h3>
+                <p class="where">{t.where}</p>
+                {t.line && <p class="line">{t.line}</p>}
+                {t.href && (
+                  <a class="more" href={t.href}>
+                    More →
+                  </a>
+                )}
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </Flat>
+  </Ridge>
+
+  <TrailEnd depth={2} wave={2} />
+</Section>
+
+<style>
+  :global(.scene .a-tree) { right: 6%; bottom: -6%; width: 12%; }
+
+  .intro p a { color: var(--accent); }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin: 1.4em 0 0; list-style: none; }
+  .links .tag { padding: 0.55em 1.3em; font-size: 16px; }
+
+  /* ---- the trail: a dashed path down the middle, stops hanging off alternate sides ---- */
+  :global(.trail-flat) {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .trail-title { margin-bottom: 36px; }
+  .trail ol {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 20px;
+    margin: 0;
+    list-style: none;
+  }
+  /* The path itself. */
+  .trail ol::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 4px dashed var(--twine);
+    translate: -50% 0;
+  }
+  .stop {
+    --tilt: -1.2deg;
+    position: relative;
+    width: calc(50% - 40px);
+    padding: 20px 22px;
+    background: var(--paper);
+    border: 5px solid var(--kraft);
+    border-radius: 4px;
+    box-shadow: 0 12px 22px rgb(30 20 8 / 0.35);
+    rotate: var(--tilt);
+  }
+  .stop:nth-child(odd) { align-self: flex-start; transform-origin: 100% 0; }
+  .stop:nth-child(even) { align-self: flex-end; --tilt: 1.2deg; transform-origin: 0 0; }
+  /* Each stop starts beside the end of the one before it, so they zig-zag down the path. */
+  .stop + .stop { margin-top: -36px; }
+  /* A marker where each stop meets the path. */
+  .stop::after {
+    content: '';
+    position: absolute;
+    top: 22px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffb27a, var(--accent) 45%, #a8501a);
+    box-shadow: 0 0 0 4px var(--paper), 0 3px 4px rgb(30 20 8 / 0.4);
+  }
+  .stop:nth-child(odd)::after { right: -54px; } /* 40px gap + half the marker + the border */
+  .stop:nth-child(even)::after { left: -54px; }
+  .when { margin: 0; font: 600 13px var(--font-sign); letter-spacing: 0.04em; text-transform: uppercase; color: var(--kraft-dark); }
+  .stop h3 { margin: 0.25em 0 0.1em; font: 700 21px / 1.2 var(--font-sign); }
+  .where { margin: 0; font-weight: 600; color: var(--ink-soft); }
+  .line { margin: 0.6em 0 0; font-size: 16px; line-height: 1.5; }
+  .more { display: inline-block; margin-top: 0.5em; font: 600 15px var(--font-sign); color: var(--accent); }
+
+  @media (max-width: 720px) {
+    :global(.scene .a-tree) { right: 2%; width: 26%; }
+    .trail ol { padding-left: 38px; }
+    .trail ol::before { left: 12px; }
+    .stop,
+    .stop:nth-child(even) { width: auto; align-self: stretch; margin: 0 0 28px; transform-origin: 0 0; }
+    .stop:nth-child(odd)::after,
+    .stop:nth-child(even)::after { left: -42px; right: auto; }
+  }
+</style>

@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website, a handmade cardboard diorama world. Image 2 is the mood. Make the asset below in exactly the style and materials of image 1, so it looks like it belongs in the same set.
+
+The asset: the near backdrop layer of the home-page diorama: a strip of rolling hills that sits in front of the distant mountains, running across the full width of the frame and filling roughly the bottom half. Wide landscape.
+
+Practical details: use your image generation tool. Everything above the hills must be a plain flat solid magenta (#FF00FF) background so I can cut it out. No cast shadow and no text or letters anywhere. Save it as assets/raw/backdrop-near.png and tell me the path.

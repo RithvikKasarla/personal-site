@@ -1,0 +1,47 @@
+---
+// A board up on two cardboard stakes, standing on a Ridge. The stakes run on down past the bottom of
+// the ridge, so the next ridge's crest hides their feet and the board looks planted in the hill.
+// The board itself is whatever goes in the slot (a paper card, a cork notice board).
+import Flat from './Flat.astro';
+
+interface Props {
+  /** Enter stagger slot, as on Flat. */
+  order?: number;
+  /** Pages size the board with their own class (it's 780px wide unless they do). */
+  class?: string;
+}
+const { order = 2, class: className = '' } = Astro.props;
+---
+
+<Flat class={`signboard ${className}`} enter="up" exit="down" depth={0} order={order}>
+  <div class="legs" aria-hidden="true">
+    <img src="/art/post.webp" alt="" />
+    <img src="/art/post.webp" alt="" />
+  </div>
+  <slot />
+</Flat>
+
+<style>
+  :global(.signboard) {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .legs {
+    position: absolute;
+    inset: auto 16% 0;
+    top: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+    translate: 0 -40px;
+  }
+  .legs img {
+    width: 26px;
+    height: 260px;
+    filter: drop-shadow(0 6px 6px rgb(40 22 8 / 0.35));
+  }
+  @media (max-width: 640px) {
+    .legs { inset-inline: 10%; }
+  }
+</style>

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+
+# Local working files: raw Codex generations and logs, mood references, planning notes, editor config.
+assets/raw/
+assets/refs/
+PLAN.md
+.claude/
+
+# Unpublished drafts stay local until they're ready (production builds skip drafts too).
+src/content/writing/show-your-work.md

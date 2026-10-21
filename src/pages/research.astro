@@ -1,0 +1,89 @@
+---
+import Section from '../layouts/Section.astro';
+import Flat from '../components/Flat.astro';
+import Ridge from '../components/Ridge.astro';
+import Signboard from '../components/Signboard.astro';
+import TrailEnd from '../components/TrailEnd.astro';
+---
+
+<Section
+  title="Research · Rithvik Kasarla"
+  description="Beyond Vector Search: hallucination-free financial reasoning with chunk-centric knowledge graphs. ICLR 2026 FinAI Workshop."
+  heading="Research"
+>
+  <Flat slot="scene" src="/art/bridge.webp" class="r-bridge" enter="left" depth={0.7} order={3} />
+
+  <!-- The paper, as a signboard on the hill below the bridge. -->
+  <Ridge wave={1} depth={0}>
+    <Signboard>
+      <article class="card">
+        <p class="venue">ICLR 2026 · Workshop on Advances in Financial AI · Poster</p>
+        <h2>Beyond Vector Search: Hallucination-Free Financial Reasoning with Chunk-Centric Knowledge Graphs</h2>
+        <p class="plain">An agentic knowledge graph for institutional finance.</p>
+
+        <dl class="stats">
+          <div><dt>94%</dt><dd>accuracy on financial document QA</dd></div>
+          <div><dt>+8%</dt><dd>above vector-RAG baselines</dd></div>
+          <div><dt>1</dt><dd>new benchmark: BeigeBench</dd></div>
+        </dl>
+
+        <p>
+          Vector search finds passages that <em>sound</em> like the question. For financial documents, close
+          enough is how a model ends up confidently citing the wrong number. This work swaps similarity for
+          structure: resolve the entities, connect them through a constrained financial ontology, and only then
+          pull the passage that holds the answer.
+        </p>
+
+        <ol class="path" aria-label="Every answer's retrieval path">
+          <li>Entity</li>
+          <li>Relationship</li>
+          <li>Chunk</li>
+        </ol>
+        <p>
+          Every answer can be traced back along that path to its source evidence. I also built BeigeBench, a
+          reasoning benchmark across multiple Beige Book districts, and released the retrieval system as an
+          open-source Python package.
+        </p>
+
+        <a class="tag cta" href="https://iclr.cc/virtual/2026/10016518" rel="noopener">See it at ICLR →</a>
+      </article>
+    </Signboard>
+  </Ridge>
+
+  <TrailEnd next={{ label: "Writing", href: "/writing" }} depth={1} wave={3} />
+</Section>
+
+<style>
+  /* Across the far hills: the first ridge's crest covers its feet. */
+  :global(.scene .r-bridge) { left: 66%; bottom: 24%; width: 30%; }
+
+  .path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 34px;
+    padding: 0;
+    margin: 1.2em 0;
+    list-style: none;
+  }
+  .path li {
+    position: relative;
+    padding: 6px 16px;
+    background: url('/art/title-sign.webp') center / 100% 100%;
+    font: 600 17px var(--font-sign);
+  }
+  .path li:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -26px;
+    top: 50%;
+    translate: 0 -50%;
+    color: var(--kraft-dark);
+  }
+
+  @media (max-width: 640px) {
+    :global(.scene .r-bridge) { left: 40%; width: 70%; bottom: 20%; }
+    /* Too narrow for one row: stack the path and point it down. */
+    .path { flex-direction: column; align-items: flex-start; gap: 26px; }
+    .path li:not(:last-child)::after { content: '↓'; right: auto; left: 22px; top: 100%; translate: 0 2px; }
+  }
+</style>

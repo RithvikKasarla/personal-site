@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website, a handmade cardboard diorama world. Image 2 is the mood. Make the asset below in exactly the style and materials of image 1, so it looks like it belongs in the same set. Image 3 shows the felt hills of this world.
+
+The asset: a square texture of the felt grass ground from image 3, seen face-on, with a few small stitched or paper details (tiny flowers, clover, pebbles) scattered sparsely and evenly. It repeats behind page content as a background, so keep it calm and even, with nothing large or centred.
+
+Practical details: use your image generation tool. Fill the whole square edge to edge, with no border, no shadow, no text, and make it tile seamlessly. Save it as assets/raw/ground-tile.png and tell me the path.

@@ -1,0 +1,72 @@
+---
+import { render } from 'astro:content';
+import Section from '../../layouts/Section.astro';
+import Flat from '../../components/Flat.astro';
+import Ridge from '../../components/Ridge.astro';
+import Signboard from '../../components/Signboard.astro';
+import TrailEnd from '../../components/TrailEnd.astro';
+import { getPosts, formatDate } from '../../scripts/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Section
+  title={`${post.data.title} · Rithvik Kasarla`}
+  description={post.data.description}
+  heading="Writing"
+  signIsTitle={false}
+>
+  <Flat slot="scene" src="/art/typewriter.webp" class="w-typewriter rock" enter="right" depth={0.8} order={3} />
+
+  <Ridge wave={2} depth={0}>
+    <Signboard>
+      <article class="card post">
+        <p class="venue">
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          {post.data.draft && ' · Draft'}
+        </p>
+        <h1>{post.data.title}</h1>
+        <div class="prose">
+          <Content />
+        </div>
+        <a class="tag cta" href="/writing">← All writing</a>
+      </article>
+    </Signboard>
+  </Ridge>
+
+  <TrailEnd next={{ label: "Writing", href: "/writing" }} depth={1} />
+</Section>
+
+<style>
+  :global(.scene .w-typewriter) { left: 66%; bottom: 20%; width: 17%; }
+
+  .post { rotate: none; } /* long reading: keep the text straight */
+  .post h1 { margin: 0 0 0.8em; font: 700 clamp(28px, 3.6vw, 40px) / 1.15 var(--font-sign); }
+  .prose :global(h2) { margin: 1.6em 0 0.4em; font: 700 24px / 1.25 var(--font-sign); }
+  .prose :global(p) { margin: 0 0 1em; }
+  .prose :global(a) { color: var(--accent); }
+  .prose :global(ol),
+  .prose :global(ul) { padding-left: 1.3em; }
+  .prose :global(li) { margin-bottom: 0.4em; }
+  .prose :global(li::marker) { font-family: var(--font-sign); font-weight: 700; color: var(--accent); }
+  .prose :global(blockquote) {
+    margin: 1.2em 0;
+    padding: 0.2em 0 0.2em 1em;
+    border-left: 4px dashed var(--kraft);
+    color: var(--ink-soft);
+  }
+  .prose :global(code) { padding: 0.1em 0.35em; background: #efe2c9; border-radius: 4px; font-size: 0.9em; }
+  .prose :global(pre) { padding: 16px; overflow-x: auto; background: #2b1d10; color: var(--paper); border-radius: 6px; }
+  .prose :global(pre code) { padding: 0; background: none; }
+  .prose :global(img) { max-width: 100%; height: auto; border: 6px solid var(--kraft); border-radius: 4px; }
+
+  @media (max-width: 640px) {
+    :global(.scene .w-typewriter) { left: 52%; width: 42%; bottom: 16%; }
+  }
+</style>

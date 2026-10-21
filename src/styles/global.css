@@ -1,0 +1,177 @@
+:root {
+  --ink: #3b2512;
+  --ink-soft: #6b4a2c;
+  --kraft: #c9955c;
+  --kraft-dark: #9c6b3a;
+  --paper: #f7efe0;
+  --twine: #b89468;
+  --accent: #e8792b; /* the goldfish */
+  --indigo: #5560c8;
+  --sky: #4f7fc0;
+  --font-sign: 'Fredoka', 'Trebuchet MS', sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--sky);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* Fixed sky behind every page. Persisted across navigations so only the flats change. */
+.sky {
+  position: fixed;
+  inset: -3vmin;
+  z-index: -1;
+  translate: calc(var(--mx, 0) * -6px) calc(var(--my, 0) * -4px);
+  transition: translate 0.6s ease-out;
+}
+.sky img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+
+/* ---------- flats ---------- */
+.flat {
+  position: absolute;
+  translate: calc(var(--mx, 0) * var(--depth) * -14px) calc(var(--my, 0) * var(--depth) * -8px);
+  transition: translate 0.5s ease-out;
+  pointer-events: none;
+}
+.flat-move, .flat-art { position: relative; }
+.flat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  filter: drop-shadow(0 calc(var(--depth) * 6px + 4px) calc(var(--depth) * 6px + 6px) rgb(40 22 8 / 0.35));
+}
+.flat a, .flat button { pointer-events: auto; }
+
+/* Strings hanging the piece from above the stage. */
+.strung .flat-art::before,
+.strung .flat-art::after {
+  content: '';
+  position: absolute;
+  /* Strings run down behind the art to its middle, so they meet rounded shapes (clouds) too. */
+  bottom: 50%;
+  width: 2px;
+  height: 120vh;
+  background: repeating-linear-gradient(to bottom, var(--twine) 0 6px, #a07f55 6px 9px);
+  z-index: -1;
+}
+.strung .flat-art::before { left: 18%; }
+.strung .flat-art::after { right: 18%; }
+
+/* Idle motion: hanging pieces sway from above, stick pieces rock from the ground. */
+.sway .flat-art { transform-origin: 50% -80vh; animation: sway 7s ease-in-out infinite alternate; }
+.rock .flat-art { transform-origin: 50% 100%; animation: rock 5.5s ease-in-out infinite alternate; }
+@keyframes sway { from { rotate: -0.35deg; } to { rotate: 0.35deg; } }
+@keyframes rock { from { rotate: -1deg; } to { rotate: 1deg; } }
+/* Floating pieces (the balloon) drift up and down. */
+.bob .flat-art { animation: bob 6s ease-in-out infinite alternate; }
+@keyframes bob { from { translate: 0 -6px; rotate: -1.5deg; } to { translate: 0 8px; rotate: 1.5deg; } }
+
+/* Hidden until the first entrance animation starts, so pieces never flash in their final spot. */
+.pre-enter [data-flat] .flat-move,
+.pre-enter [data-ground] { visibility: hidden; }
+
+/* ---------- signs ---------- */
+.sign-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-sign);
+  color: var(--ink);
+  pointer-events: none;
+}
+
+.tag {
+  pointer-events: auto;
+  display: inline-block;
+  font-family: var(--font-sign);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  background: url('/art/title-sign.webp') center / 100% 100% no-repeat;
+  filter: drop-shadow(0 6px 6px rgb(40 22 8 / 0.35));
+  border: 0;
+  cursor: pointer;
+  transition: rotate 0.25s, scale 0.25s;
+}
+.tag:hover { rotate: -2deg; scale: 1.05; }
+.tag:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+/* ---------- paper cards ---------- */
+.card {
+  position: relative;
+  padding: clamp(24px, 5vw, 56px);
+  background: var(--paper);
+  border: 10px solid var(--kraft);
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px var(--kraft-dark), 0 18px 40px rgb(30 20 8 / 0.35);
+  rotate: -0.4deg;
+  font-size: 18px;
+  line-height: 1.65;
+  pointer-events: auto;
+}
+.card .venue {
+  margin: 0 0 0.6em;
+  font: 600 14px var(--font-sign);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kraft-dark);
+}
+.card h2 {
+  margin: 0;
+  font: 700 clamp(24px, 3.2vw, 34px) / 1.2 var(--font-sign);
+}
+.card .plain { margin: 0.5em 0 1.5em; color: var(--ink-soft); font-size: 19px; }
+.card .cta { margin-top: 0.6em; padding: 0.8em 1.6em; font-size: 17px; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 0 1.6em;
+}
+.stats div {
+  padding: 14px;
+  background: #efe2c9;
+  border: 2px dashed var(--kraft);
+  border-radius: 8px;
+}
+.stats dt { font: 700 30px / 1 var(--font-sign); color: var(--accent); }
+.stats dd { margin: 6px 0 0; font-size: 15px; line-height: 1.35; }
+
+/* A small hanging sign that heads a section further down a page. */
+.section-sign {
+  width: fit-content;
+  margin: 0 auto 28px;
+  padding: 0.5em 1.4em;
+  background: url('/art/title-sign.webp') center / 100% 100% no-repeat;
+  font: 700 clamp(22px, 2.6vw, 30px) var(--font-sign);
+  filter: drop-shadow(0 6px 6px rgb(40 22 8 / 0.35));
+}
+
+@media (max-width: 640px) {
+  .stats { grid-template-columns: 1fr; }
+}
+
+/* Revealed on scroll by scripts/stage.ts. Only JS adds .await-reveal, so nothing stays hidden without it.
+   Transparent rather than hidden, so keyboard users can still tab to it (focus scrolls it into view). */
+.await-reveal[data-reveal='swing'] { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sway .flat-art, .rock .flat-art, .bob .flat-art { animation: none; }
+  .flat, .sky { translate: none; transition: none; }
+}

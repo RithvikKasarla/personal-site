@@ -1,0 +1,31 @@
+---
+import Section from '../layouts/Section.astro';
+import Flat from '../components/Flat.astro';
+import Ridge from '../components/Ridge.astro';
+import Signboard from '../components/Signboard.astro';
+import TrailEnd from '../components/TrailEnd.astro';
+---
+
+<Section
+  title="Off the map · Rithvik Kasarla"
+  description="This page doesn't exist."
+  heading="Off the map"
+>
+  <Flat slot="scene" src="/art/cloud.webp" class="lost-cloud sway" enter="down" depth={0.4} order={3} strings />
+
+  <Ridge wave={2} depth={0}>
+    <Signboard>
+      <article class="card">
+        <p class="venue">404</p>
+        <h2>This trail doesn't go anywhere.</h2>
+        <p class="plain">The page may have moved, or the link had a typo. The signpost below points everywhere.</p>
+      </article>
+    </Signboard>
+  </Ridge>
+
+  <TrailEnd depth={1} />
+</Section>
+
+<style>
+  :global(.scene .lost-cloud) { left: 14%; top: 4%; width: 9%; }
+</style>

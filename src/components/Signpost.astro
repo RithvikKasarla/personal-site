@@ -1,0 +1,59 @@
+---
+// The four-armed cardboard signpost, with a link painted on each arm. The hub uses it to send people
+// into the story; section pages plant one at the end of their trail.
+import Flat from './Flat.astro';
+
+// Arms on signpost.webp, measured from its alpha (percent of the image box). Arms 1 and 3 point
+// right, 2 and 4 point left.
+const ARMS = [
+  { top: 13, left: 53 },
+  { top: 29.8, left: 44 },
+  { top: 46, left: 57 },
+  { top: 62.9, left: 46 },
+];
+
+interface Props {
+  /** One link per arm, top to bottom. */
+  links: { label: string; href: string }[];
+  /** Positions the post; the page's styles own where it stands. */
+  class?: string;
+  label?: string;
+  depth?: number;
+  order?: number;
+}
+const { links, class: className = '', label = 'Sections', depth = 0.95, order = 2 } = Astro.props;
+---
+
+<Flat src="/art/signpost.webp" class={`signpost ${className}`} enter="up" depth={depth} order={order}>
+  <nav class="sign-labels" aria-label={label}>
+    {
+      links.slice(0, ARMS.length).map((l, i) => (
+        <a class="sign-label" href={l.href} style={`top:${ARMS[i].top}%;left:${ARMS[i].left}%`}>
+          {l.label}
+        </a>
+      ))
+    }
+  </nav>
+</Flat>
+
+<style>
+  /* Lettering sized to the post (cqw), so it fits the arms at any size. */
+  .sign-labels { position: absolute; inset: 0; container-type: inline-size; }
+  .sign-label {
+    position: absolute;
+    translate: -50% -50%;
+    padding: 0.15em 0.4em;
+    font-family: var(--font-sign);
+    font-weight: 600;
+    font-size: 9.5cqw;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s, scale 0.2s;
+  }
+  .sign-label:hover { color: var(--accent); scale: 1.08; }
+  .sign-label:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  /* The post leans a little toward a hovered arm. */
+  :global(.signpost .flat-art) { transform-origin: 50% 100%; transition: rotate 0.3s ease; }
+  :global(.signpost:has(.sign-label:hover) .flat-art) { rotate: 1.5deg; }
+</style>

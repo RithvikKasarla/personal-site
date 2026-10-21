@@ -1,0 +1,5 @@
+Image 1 is the approved style key for my personal website, a handmade cardboard diorama world. Image 2 is the mood. Make the asset below in exactly the style and materials of image 1, so it looks like it belongs in the same set.
+
+The asset: a section of cardboard picket fence, three or four posts long, seen straight on from the front. It runs behind content cards on my Work page, which hang on it. Wide landscape.
+
+Practical details: use your image generation tool. One fence section only, isolated, with no cast shadow (the scene adds its own lighting) and no text anywhere. Put it on a plain flat solid bright green (#00FF00) background so I can cut it out. Save it as assets/raw/fence.png and tell me the path.

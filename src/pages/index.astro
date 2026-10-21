@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import Flat from '../components/Flat.astro';
+import Signpost from '../components/Signpost.astro';
+
+const sections = [
+  { label: 'Work', href: '/work' },
+  { label: 'Research', href: '/research' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/about' },
+];
+---
+
+<Base
+  title="Rithvik Kasarla"
+  description="Rithvik Kasarla loves to build, solve problems, and play around with AI. Co-founder and CTO of Centura Property Compliance, building AI agents that file rental licenses."
+>
+  <main class="stage">
+    <div class="stage-inner">
+      <Flat src="/art/cloud.webp" class="cloud-a sway" enter="down" depth={0.3} order={5} strings />
+      <Flat src="/art/cloud.webp" class="cloud-b sway" enter="down" depth={0.25} order={6} strings />
+      <Flat src="/art/balloon.webp" class="balloon bob" enter="down" depth={0.35} order={7} />
+      <Flat src="/art/backdrop-near.webp" class="hills" enter="up" depth={0.45} order={1} />
+      <Flat src="/art/village.webp" class="village" enter="up" depth={0.6} order={2} />
+      <Flat src="/art/tree.webp" class="tree-r rock" enter="up" depth={0.8} order={4} />
+      <Flat src="/art/tree.webp" class="tree-l rock" enter="up" depth={1.1} order={5} />
+
+      <Flat src="/art/foreground.webp" class="front" enter="up" depth={1.2} order={3} />
+
+      <!-- Before the signpost so it comes first in tab order. -->
+      <Flat
+        src="/art/title-sign.webp"
+        class="title sway"
+        enter="down"
+        exit="up"
+        depth={0.6}
+        order={0}
+        strings
+        priority
+      >
+        <div class="sign-text">
+          <h1>Rithvik Kasarla</h1>
+          <p>I love to build, solve problems, and play around with AI.</p>
+        </div>
+        <a class="tag explore" href="/work">Explore the story →</a>
+      </Flat>
+
+      <Signpost links={sections} />
+
+      <Flat
+        src="/art/back-pointing.webp"
+        alt="Rithvik as a cardboard cutout, pointing out at the world"
+        class="hero rock"
+        enter="up"
+        depth={1.4}
+        order={3}
+      />
+    </div>
+  </main>
+</Base>
+
+<style>
+  .stage {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+  /* A 16:9 stage that always covers the viewport; every piece is placed in % of it. */
+  .stage-inner {
+    --sw: max(100vw, 177.78svh);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--sw);
+    height: max(100svh, 56.25vw);
+    translate: -50% -50%;
+  }
+
+  .stage :global(.cloud-a) { left: 4%; top: 5%; width: 12%; }
+  .stage :global(.cloud-b) { left: 82%; top: 2%; width: 10%; }
+  .stage :global(.hills) { left: -4%; bottom: -16%; width: 108%; }
+  .stage :global(.village) { left: 56%; bottom: 21%; width: 31%; }
+  /* A soft shadow where the village's base meets the hill, so it sits on it rather than hovering. */
+  .stage :global(.village .flat-art::after) {
+    content: '';
+    position: absolute;
+    inset: auto 3% -5% 2%;
+    height: 22%;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgb(30 30 8 / 0.42), transparent);
+  }
+  /* The plants are layered over the signpost so its foot is planted among them, but under Rithvik.
+     (z-index rather than source order, which keeps the title sign first in tab order.) */
+  .stage :global(.front) { left: -2%; bottom: -3%; width: 104%; z-index: 1; }
+  .stage :global(.balloon) { left: 76%; top: 20%; width: 4.2%; }
+  .stage :global(.tree-r) { right: 0%; bottom: 12%; width: 13%; }
+  .stage :global(.tree-l) { left: -3%; bottom: 6%; width: 14%; }
+  .stage :global(.signpost) { left: 31%; bottom: 4%; width: 16.5%; }
+  .stage :global(.hero) { left: 13%; bottom: -12%; width: 14.5%; z-index: 2; }
+  .stage :global(.title) { left: 28%; top: 4%; width: 44%; }
+
+  /* ---- title sign ---- */
+  .sign-text h1 {
+    margin: 0;
+    font-size: calc(var(--sw) * 0.042);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .sign-text p {
+    margin: 0.5em 0 0;
+    font-size: calc(var(--sw) * 0.0135);
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .explore {
+    position: absolute;
+    left: 50%;
+    top: 104%;
+    translate: -50% 0;
+    padding: 0.7em 1.4em;
+    font-size: calc(var(--sw) * 0.0115);
+  }
+  .explore::before,
+  .explore::after {
+    content: '';
+    position: absolute;
+    bottom: 90%;
+    width: 2px;
+    height: 1.4em;
+    background: var(--twine);
+  }
+  .explore::before { left: 22%; }
+  .explore::after { right: 22%; }
+
+
+  /* ---- phones in portrait: a tall stage, the scene cropped around the sign and the post ---- */
+  @media (max-aspect-ratio: 4/5) {
+    .stage-inner { --sw: 100vw; width: 100vw; height: 100svh; }
+    .stage :global(.cloud-a) { left: -6%; top: 31%; width: 30%; }
+    .stage :global(.cloud-b) { left: 74%; top: 29%; width: 28%; }
+    .stage :global(.hills) { left: -90%; bottom: -6%; width: 280%; }
+    .stage :global(.village) { left: 3%; bottom: 36%; width: 54%; }
+    .stage :global(.front) { left: -60%; bottom: -1%; width: 220%; }
+    .stage :global(.balloon) { left: 66%; top: 40%; width: 15%; }
+    .stage :global(.tree-r) { right: -14%; bottom: 20%; width: 40%; }
+    .stage :global(.tree-l) { display: none; }
+    /* Capped by height too, so on a portrait tablet the post can't climb into the sign. */
+    .stage-inner { --post: min(52vw, 29svh); }
+    .stage :global(.signpost) { left: 44%; bottom: 3%; width: var(--post); }
+    .stage :global(.hero) { left: -4%; bottom: -8%; width: 40%; }
+    .stage :global(.title) { left: 3%; top: 4%; width: 94%; }
+    .sign-text h1 { font-size: calc(var(--sw) * 0.088); }
+    .sign-text p { font-size: calc(var(--sw) * 0.034); }
+    .explore { font-size: calc(var(--sw) * 0.036); }
+  }
+</style>
